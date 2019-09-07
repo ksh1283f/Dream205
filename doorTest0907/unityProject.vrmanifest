@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.doortest0907.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\system888\\Desktop\\doorTest0907\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "doorTest0907 [Testing]"
+        }
+      }
+    }
+  ]
+}
