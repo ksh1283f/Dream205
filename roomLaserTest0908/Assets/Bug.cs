@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class Bug : MonoBehaviour
 {
-    private object Cubes;
+    //  private GameObject Cubes;
+    // public GameObject Sphere;
+    // private AudioSource Sound;
+    public GameManager gameManager;
+    public AudioSource sound;
 
-    public GameObject Sphere;
-    // public AudioSource Sound;
 
     // Start is called before the first frame update
     void Start()
     {
-      //  var Cube = GameObject.FindWithTag("Interactables");
-      //  var Sound = GameObject.FindWithTag("Sound");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Cubes==null)
+  
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag=="Interactables")
         {
-            var Cubes = GameObject.FindWithTag("Interactables");
-            var Sound = GameObject.FindWithTag("Sound");
-            Instantiate(Sphere, Cubes.transform.position, Quaternion.identity);
-            Destroy(Sound);
+            // var Sound = GameObject.FindWithTag("Sound");
+            // Instantiate(Sphere, Cubes.transform.position, Quaternion.identity);
+            // Destroy(Sound);
+            gameManager.CreateSphere(transform.position);
+            gameManager.RemoveSound(sound);
         }
-    
+
     }
 }
