@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private GameObject Cubes;
+    //public GameObject CubeLiquid;
+    //public GameObject CubeWalking;
+
     private AudioSource Sound;
     public GameObject Sphere;
+
+    public void RemoveCube(GameObject obj)
+    {
+        obj.SetActive(false);
+    }
 
     public void CreateSphere(Vector3 pos)
     {
@@ -17,16 +24,5 @@ public class GameManager : MonoBehaviour
     {
         Sound = audio;
         Sound.Stop();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
