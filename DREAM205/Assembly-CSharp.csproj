@@ -63,8 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ColliderGrbObject.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HandGraps.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\SoundTest.cs" />
+    <Compile Include="Assets\Scripts\UIFadeOut.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/system888/Desktop/gitHub/Dream205/DREAM205/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
