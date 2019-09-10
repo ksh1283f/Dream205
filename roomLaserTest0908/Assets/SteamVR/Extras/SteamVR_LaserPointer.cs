@@ -17,16 +17,18 @@ namespace Valve.VR.Extras
         public Color clickColor = Color.green;
         public GameObject holder;
         public GameObject pointer;
+        public GameObject laser;
         bool isActive = false;
         public bool addRigidBody = false;
         public Transform reference;
         public event PointerEventHandler PointerIn;
         public event PointerEventHandler PointerOut;
         public event PointerEventHandler PointerClick;
+        public GameObject gameManager;
 
         Transform previousContact = null;
 
-    
+
 
         private void Start()
         {
@@ -35,44 +37,44 @@ namespace Valve.VR.Extras
                 pose = this.GetComponent<SteamVR_Behaviour_Pose>();
             if (pose == null)
                 Debug.LogError("No SteamVR_Behaviour_Pose component found on this object");
-            
+
             if (interactWithUI == null)
                 Debug.LogError("No ui interaction action has been set on this component.");
-            
 
-            holder = new GameObject();
-            holder.transform.parent = this.transform;
-            holder.transform.localPosition = Vector3.zero;
-            holder.transform.localRotation = Quaternion.identity;
 
-            pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            //
-            pointer.tag = "Interactables";
-            //
-            pointer.transform.parent = holder.transform;
-            pointer.transform.localScale = new Vector3(thickness, thickness, 100f);
-            pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
-            pointer.transform.localRotation = Quaternion.identity;
-            BoxCollider collider = pointer.GetComponent<BoxCollider>();
-            if (addRigidBody)
-            {
-                if (collider)
-                {
-                    collider.isTrigger = true;
-                }
-                Rigidbody rigidBody = pointer.AddComponent<Rigidbody>();
-                rigidBody.isKinematic = true;
-            }
-            else
-            {
-                if (collider)
-                {
-                    Object.Destroy(collider);
-                }
-            }
-            Material newMaterial = new Material(Shader.Find("Unlit/Color"));
-            newMaterial.SetColor("_Color", color);
-            pointer.GetComponent<MeshRenderer>().material = newMaterial;
+            //holder = new GameObject();
+            //holder.transform.parent = this.transform;
+            //holder.transform.localPosition = Vector3.zero;
+            //holder.transform.localRotation = Quaternion.identity;
+
+            //pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            ////
+            //pointer.tag = "Interactables";
+            ////
+            //pointer.transform.parent = holder.transform;
+            //pointer.transform.localScale = new Vector3(thickness, thickness, 100f);
+            //pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
+            //pointer.transform.localRotation = Quaternion.identity;
+            //BoxCollider collider = pointer.GetComponent<BoxCollider>();
+            //if (addRigidBody)
+            //{
+            //    if (collider)
+            //    {
+            //        collider.isTrigger = true;
+            //    }
+            //    Rigidbody rigidBody = pointer.AddComponent<Rigidbody>();
+            //    rigidBody.isKinematic = true;
+            //}
+            //else
+            //{
+            //    if (collider)
+            //    {
+            //        Object.Destroy(collider);
+            //    }
+            //}
+            //Material newMaterial = new Material(Shader.Find("Unlit/Color"));
+            //newMaterial.SetColor("_Color", color);
+            //pointer.GetComponent<MeshRenderer>().material = newMaterial;
         }
 
         public virtual void OnPointerIn(PointerEventArgs e)
@@ -93,7 +95,6 @@ namespace Valve.VR.Extras
                 PointerOut(this, e);
         }
 
-        
         private void Update()
         {
             if (!isActive)
@@ -108,63 +109,83 @@ namespace Valve.VR.Extras
             RaycastHit hit;
             bool bHit = Physics.Raycast(raycast, out hit);
 
-            if (previousContact && previousContact != hit.transform)
+            //if (previousContact && previousContact != hit.transform)    // 
+            //{
+            //    Debug.LogError("previousContact && previousContact != hit.transform");
+            //    PointerEventArgs args = new PointerEventArgs();
+            //    args.fromInputSource = pose.inputSource;
+            //    args.distance = 0f;
+            //    args.flags = 0;
+            //    args.target = previousContact;
+            //    OnPointerOut(args);
+            //    previousContact = null;
+            //}
+            //if (bHit && previousContact != hit.transform)
+            //{
+            //    Debug.LogError("bHit && previousContact != hit.transform");
+            //    PointerEventArgs argsIn = new PointerEventArgs();
+            //    argsIn.fromInputSource = pose.inputSource;
+            //    argsIn.distance = hit.distance;
+            //    argsIn.flags = 0;
+            //    argsIn.target = hit.transform;
+            //    OnPointerIn(argsIn);
+            //    previousContact = hit.transform;
+            //}
+            //if (!bHit)  // 레이저에 아무것도 닿지 않았을때
+            //{
+            //    Debug.LogError("!bHit");
+            //    previousContact = null;
+            //}
+            if (bHit && hit.distance < 100f)    // 레이저에 뭔가 닿았고, 물체와 컨트롤러 사이의 거리가 100 미만일 때
             {
-                PointerEventArgs args = new PointerEventArgs();
-                args.fromInputSource = pose.inputSource;
-                args.distance = 0f;
-                args.flags = 0;
-                args.target = previousContact;
-                OnPointerOut(args);
-                previousContact = null;
-            }
-            if (bHit && previousContact != hit.transform)
-            {
-                PointerEventArgs argsIn = new PointerEventArgs();
-                argsIn.fromInputSource = pose.inputSource;
-                argsIn.distance = hit.distance;
-                argsIn.flags = 0;
-                argsIn.target = hit.transform;
-                OnPointerIn(argsIn);
-                previousContact = hit.transform;
-            }
-            if (!bHit)
-            {
-                previousContact = null;
-            }
-            if (bHit && hit.distance < 100f)
-            {
+                Debug.LogError("bHit && hit.distance < 100f");
                 dist = hit.distance;
             }
 
-            if (bHit && interactWithUI.GetStateUp(pose.inputSource))
-            {
-                PointerEventArgs argsClick = new PointerEventArgs();
-                argsClick.fromInputSource = pose.inputSource;
-                argsClick.distance = hit.distance;
-                argsClick.flags = 0;
-                argsClick.target = hit.transform;
-                OnPointerClick(argsClick);
-            }
+            //if (bHit && interactWithUI.GetStateUp(pose.inputSource))
+            //{
+            //    Debug.LogError("bHit && interactWithUI.GetStateUp(pose.inputSource)");
+            //    PointerEventArgs argsClick = new PointerEventArgs();
+            //    argsClick.fromInputSource = pose.inputSource;
+            //    argsClick.distance = hit.distance;
+            //    argsClick.flags = 0;
+            //    argsClick.target = hit.transform;
+            //    OnPointerClick(argsClick);
+            //}
 
             if (interactWithUI != null && interactWithUI.GetState(pose.inputSource))
             {
-                pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
-                pointer.GetComponent<MeshRenderer>().material.color = clickColor;
-                if (Physics.Raycast(transform.position, transform.forward, out hit))
-                {
-                    if (hit.collider.gameObject.tag == "Interactables")
-                    {
-                        Destroy(hit.collider);
-                    }
-                }
+                Debug.LogError("interactWithUI != null && interactWithUI.GetState(pose.inputSource)");
+                //pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
+                laser.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
+                if (laser != null && !laser.gameObject.activeSelf)
+                    laser.gameObject.SetActive(true);
+                //pointer.GetComponent<MeshRenderer>().material.color = clickColor;
+                //if (Physics.Raycast(transform.position, transform.forward, out hit))
+                //{
+                //    if (gameManager == null)
+                //    {
+                //        Debug.LogError("gameManager is null");
+                //        return;
+                //    }
+
+                //    // 
+
+                //    //if (hit.collider.gameObject.tag == "Interactables")
+                //    //{
+                //    //    Destroy(hit.collider);
+                //    //}
+                //}
             }
             else
             {
-                pointer.transform.localScale = new Vector3(thickness, thickness, dist);
-                pointer.GetComponent<MeshRenderer>().material.color = color;
+                //pointer.transform.localScale = new Vector3(thickness, thickness, dist);
+                laser.transform.localScale = new Vector3(thickness, thickness, dist);
+                if (laser != null && laser.gameObject.activeSelf)
+                    laser.gameObject.SetActive(false);
+                //pointer.GetComponent<MeshRenderer>().material.color = color;
             }
-            pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
+            //pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
         }
 
     }

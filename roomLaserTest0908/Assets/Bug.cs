@@ -11,18 +11,6 @@ public class Bug : MonoBehaviour
     public AudioSource sound;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-  
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag=="Interactables")
@@ -32,6 +20,7 @@ public class Bug : MonoBehaviour
             // Destroy(Sound);
             gameManager.CreateSphere(transform.position);
             gameManager.RemoveSound(sound);
+            gameManager.RemoveCube(gameObject);
         }
 
     }
