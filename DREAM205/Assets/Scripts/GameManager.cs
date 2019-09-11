@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //public GameObject CubeLiquid;
+    //public GameObject CubeWalking;
+
+    private AudioSource Sound;
+    public GameObject Maggot;
+
+    public void m_RemoveObj(GameObject obj)
     {
-        
+        obj.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreateMaggot(Vector3 pos)
     {
-        
+        Instantiate(Maggot, pos, Quaternion.identity);
+    }
+
+    public void RemoveSound(AudioSource audio)
+    {
+        Sound = audio;
+        Sound.Stop();
     }
 }

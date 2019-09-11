@@ -65,6 +65,8 @@
     <Compile Include="Assets\Scripts\ColliderGrbObject.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HandGraps.cs" />
+    <Compile Include="Assets\Scripts\InteractiveProps.cs" />
+    <Compile Include="Assets\Scripts\LaserElevator.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\SoundTest.cs" />
     <Compile Include="Assets\Scripts\UIFadeOut.cs" />

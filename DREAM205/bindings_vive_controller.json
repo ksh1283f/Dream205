@@ -55,7 +55,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/grab"
+                     "output" : "/actions/default/in/interactui"
                   }
                },
                "mode" : "button",
@@ -91,7 +91,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/grab"
+                     "output" : "/actions/default/in/interactui"
                   }
                },
                "mode" : "button",
