@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public Animation StartFo;
+    public Animation anim;
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   // IEnumerator Start()
+  //  {
+
+   // }
 
     // Update is called once per frame
-    void Update()
+    IEnumerator Update()
     {
-       
+        if (anim.isPlaying)
+        {
+            yield return new WaitForSeconds(3.0f);
+        }
     }
 
 }

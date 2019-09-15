@@ -15,7 +15,7 @@ public class UIFadeOut : MonoBehaviour
  
     void Update()
     {
-         if (Input.GetKeyDown("0"))
+         if (Input.GetKeyDown(KeyCode.Space))
           {
             StartFo.Play();
           }

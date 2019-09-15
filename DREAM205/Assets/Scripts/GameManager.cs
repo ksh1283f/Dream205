@@ -25,4 +25,9 @@ public class GameManager : MonoBehaviour
         Sound = audio;
         Sound.Stop();
     }
+
+   // public void EmissionOn(MeshRenderer number)
+   // {
+   //     number.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(255, 0, 0));
+   // }
 }

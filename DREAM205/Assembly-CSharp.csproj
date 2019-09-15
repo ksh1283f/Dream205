@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ColliderGrbObject.cs" />
+    <Compile Include="Assets\Scripts\ElevatorInterac.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HandGraps.cs" />
     <Compile Include="Assets\Scripts\InteractiveProps.cs" />
