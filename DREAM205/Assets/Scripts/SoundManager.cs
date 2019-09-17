@@ -2,23 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class SoundManager : MonoBehaviour
 {
-    public Animation anim;
+    public Animation StartFo;
+    //AudioClip narr;
+    public List<AudioSource> SoundList = new List<AudioSource>();
 
-    // Start is called before the first frame update
-   // IEnumerator Start()
-  //  {
+    //  private void Awake()
+    // {
 
-   // }
+    //  }
 
-    // Update is called once per frame
-    IEnumerator Update()
+
+    IEnumerator Start()
     {
-        if (anim.isPlaying)
+        if(StartFo.Play());
         {
-            yield return new WaitForSeconds(3.0f);
+            while (StartFo.isPlaying)
+                yield return null;
         }
+
+        for (int i = 0; i < SoundList.Count; i++)
+        {
+            SoundList[i].Play();
+            while (SoundList[i].isPlaying)
+                yield return null;
+        }
+
     }
+
+
+   // Update()
+   // {
+        
+   // }
 
 }
