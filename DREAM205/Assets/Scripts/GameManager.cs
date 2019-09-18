@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     private AudioSource Sound;
     public GameObject Maggot;
+    
 
     public void m_RemoveObj(GameObject obj)
     {

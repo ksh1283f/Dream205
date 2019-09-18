@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public Animation StartFo;
+    //public Animation anim;
     //AudioClip narr;
     public List<AudioSource> SoundList = new List<AudioSource>();
 
@@ -14,16 +14,18 @@ public class SoundManager : MonoBehaviour
     // {
 
     //  }
-
-
-    IEnumerator Start()
+    public void StartPlay()
     {
-        if(StartFo.Play());
-        {
-            while (StartFo.isPlaying)
-                yield return null;
-        }
+        StartCoroutine(PlayerSound());
+    }
 
+    IEnumerator PlayerSound()
+    {
+        // anim.Play();
+        //    while (anim.isPlaying)
+        //   yield return null;
+
+        yield return new WaitForSeconds(4f);
         for (int i = 0; i < SoundList.Count; i++)
         {
             SoundList[i].Play();
