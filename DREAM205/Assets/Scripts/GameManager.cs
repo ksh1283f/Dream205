@@ -9,7 +9,14 @@ public class GameManager : MonoBehaviour
 
     private AudioSource Sound;
     public GameObject Maggot;
-    
+
+    public SoundManager soundManager;
+
+    public GameObject secondFloor;
+    public GameObject fifthFloor;
+    public GameObject fourteen;
+    public GameObject closed;
+
 
     public void m_RemoveObj(GameObject obj)
     {
@@ -27,8 +34,35 @@ public class GameManager : MonoBehaviour
         Sound.Stop();
     }
 
-   // public void EmissionOn(MeshRenderer number)
-   // {
-   //     number.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(255, 0, 0));
-   // }
+    private void Start()
+    {
+        soundManager.StartCoroutine(soundManager.SoundPlay());//코루틴 호출?...
+        closed.gameObject.GetComponent<BoxCollider>().enabled = false;
+        secondFloor.gameObject.GetComponent<BoxCollider>().enabled = false;
+        fifthFloor.gameObject.GetComponent<BoxCollider>().enabled = false;
+        fourteen.gameObject.GetComponent<BoxCollider>().enabled = false;
+
+    }
+
+    private void Update()
+    {
+       
+        if (true)//코루틴 종료 체크
+        {
+            closed.gameObject.GetComponent<BoxCollider>().enabled = true;
+        }
+      
+
+        if (true)//audioSource.time>0//"~원하는 층수를 눌러주세요" 재생 종료 체크
+        {
+            secondFloor.gameObject.GetComponent<BoxCollider>().enabled = true;
+            fifthFloor.gameObject.GetComponent<BoxCollider>().enabled = true;
+            fourteen.gameObject.GetComponent<BoxCollider>().enabled = true;
+        }
+    }
+
+    // public void EmissionOn(MeshRenderer number)
+    // {
+    //     number.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(255, 0, 0));
+    // }
 }

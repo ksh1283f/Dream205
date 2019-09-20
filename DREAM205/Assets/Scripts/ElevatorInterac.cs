@@ -7,6 +7,12 @@ public class ElevatorInterac : MonoBehaviour
 {
     public GameManager gameManager;
     AudioSource LaserFx;
+   // public SoundManager soundManager;
+
+    //public GameObject secondFloor;
+   // public GameObject fifthFloor;
+   // public GameObject fourteen;
+
     // public MeshRenderer m_mesh;
     // public AudioSource sound;
     private List<Renderer> rendererList = new List<Renderer>();
@@ -41,5 +47,14 @@ public class ElevatorInterac : MonoBehaviour
         }
 
     }
+
+   /* private void Update()
+    {
+        if (true)
+        {
+            secondFloor.gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+
+    }*/
 
 }

@@ -29,7 +29,7 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    IEnumerator SoundPlay()
+    public IEnumerator SoundPlay()
     {
         StartFo.Play();
         while (StartFo.isPlaying)
