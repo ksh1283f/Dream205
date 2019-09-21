@@ -3,28 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum E_WaypointType
-{
-    None,
-    First,
-    Second,
-    Third,
-    Fourth,
-    Fifth,
-    Sixth,
-    Seventh,
-    Eighth,
-    Nineth,
-    Tenth,
-}
-
 public class Waypoint : MonoBehaviour
 {
     //public Action<E_WaypointType> OnInActive { get; set; }
-    public E_WaypointType WayPointType { get { return wayPointType; } }
-
-    [SerializeField] E_WaypointType wayPointType;
     Collider col;
+    public List<Waypoint> connectedWayPointList = new List<Waypoint>();
+
+    [SerializeField] bool isStartPoint;
+    public bool IsStartPoint { get { return isStartPoint; } }
 
     private void Awake()
     {
@@ -35,7 +21,7 @@ public class Waypoint : MonoBehaviour
     {
         if (col == null)
         {
-            Debug.LogError(wayPointType + " collider is null!");
+            Debug.LogError(transform.name + "'s col is null");
             return;
         }
 
