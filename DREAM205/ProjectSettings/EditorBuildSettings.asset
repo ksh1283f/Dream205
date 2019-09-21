@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/level0Elevator.unity
+    guid: b217a051e908b384ba5458621fda4941
+  - enabled: 1
+    path: Assets/Scenes/level1FrontDoor.unity
+    guid: d4eb71742cf4ba542a1f0a088a6f893f
+  - enabled: 1
+    path: Assets/Scenes/level2Room.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

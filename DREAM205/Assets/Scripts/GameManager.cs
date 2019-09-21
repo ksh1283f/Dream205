@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        soundManager.StartCoroutine(soundManager.SoundPlay());//코루틴 호출?...
+        soundManager.OnSoundPlayEnd += ButtonOrder;
         closed.gameObject.GetComponent<BoxCollider>().enabled = false;
         secondFloor.gameObject.GetComponent<BoxCollider>().enabled = false;
         fifthFloor.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -44,15 +44,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void ButtonOrder()
+    {  
+            closed.gameObject.GetComponent<BoxCollider>().enabled = true;
+    }
+
     private void Update()
     {
-       
-        if (true)//코루틴 종료 체크
-        {
-            closed.gameObject.GetComponent<BoxCollider>().enabled = true;
-        }
-      
-
         if (true)//audioSource.time>0//"~원하는 층수를 눌러주세요" 재생 종료 체크
         {
             secondFloor.gameObject.GetComponent<BoxCollider>().enabled = true;
@@ -60,6 +58,7 @@ public class GameManager : MonoBehaviour
             fourteen.gameObject.GetComponent<BoxCollider>().enabled = true;
         }
     }
+    
 
     // public void EmissionOn(MeshRenderer number)
     // {

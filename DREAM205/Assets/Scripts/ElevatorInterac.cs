@@ -7,6 +7,9 @@ public class ElevatorInterac : MonoBehaviour
 {
     public GameManager gameManager;
     AudioSource LaserFx;
+    public AudioSource plant;
+    public AudioSource ElevatorAmbience;
+    
    // public SoundManager soundManager;
 
     //public GameObject secondFloor;
@@ -45,7 +48,15 @@ public class ElevatorInterac : MonoBehaviour
                 rendererList[i].material.SetColor("_EmissionColor", new Color(255, 0, 0));
 
         }
+        if (other.gameObject.name=="close")
+        {
+            plant.Play();
+        }
 
+        if (other.gameObject.name == "no2")
+        {
+            
+        }
     }
 
    /* private void Update()

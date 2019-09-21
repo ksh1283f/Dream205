@@ -74,7 +74,7 @@ public class ColliderGrbObject : MonoBehaviour
     {
         if (grabAction.GetLastStateDown(handType))
         {
-            if (collidingObject)
+            if (collidingObject.CompareTag("Grab"))
             {
                 GrabObject();
             }

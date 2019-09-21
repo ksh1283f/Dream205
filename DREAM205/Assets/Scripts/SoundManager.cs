@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
 {
     public Action<int> OnSoundStart { get; set; }
     public Action<int> OnSoundEnd { get; set; }
+    public Action OnSoundPlayEnd { get; set; }
 
     public Animation StartFo;
     //AudioClip narr;
@@ -49,6 +50,9 @@ public class SoundManager : MonoBehaviour
             if (OnSoundEnd != null)
                 OnSoundEnd(i);
         }
+        if (OnSoundPlayEnd != null)
+            OnSoundPlayEnd();
+
 
     }
 

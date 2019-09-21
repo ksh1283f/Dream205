@@ -68,6 +68,14 @@
     <Compile Include="Assets\Scripts\HandGraps.cs" />
     <Compile Include="Assets\Scripts\InteractiveProps.cs" />
     <Compile Include="Assets\Scripts\LaserElevator.cs" />
+    <Compile Include="Assets\Scripts\Refectoring\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\Scripts\Refectoring\LaserInteraction.cs" />
+    <Compile Include="Assets\Scripts\Refectoring\LaserSelect.cs" />
+    <Compile Include="Assets\Scripts\Refectoring\OpenDoor.cs" />
+    <Compile Include="Assets\Scripts\Refectoring\PickUp.cs" />
+    <Compile Include="Assets\Scripts\Refectoring\Singletone.cs" />
+    <Compile Include="Assets\Scripts\Refectoring\TestSingletoneObj.cs" />
+    <Compile Include="Assets\Scripts\Refectoring\UserEvent.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\SoundTest.cs" />
     <Compile Include="Assets\Scripts\UIFadeOut.cs" />
