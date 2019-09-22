@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnswerThePhone : MonoBehaviour
+public class AnswerThePhone : InteractableObj
 {
     AudioSource m_audioSource;
     // Start is called before the first frame update
@@ -17,6 +17,7 @@ public class AnswerThePhone : MonoBehaviour
         if (transform.position.y > 1f)
         {
             m_audioSource.Play();
+            isInteractionEnd = true;
         }
        // if (m_audioSource.time>0)
        // {

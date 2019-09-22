@@ -15,7 +15,7 @@ public enum E_ElevatorBtnType
     Fourteenth,
 }
 
-public class ElevatorInterac : MonoBehaviour
+public class ElevatorInterac : InteractableObj
 {
     /*새로 추가된 코드*/
     public E_ElevatorBtnType BtnType;
@@ -28,8 +28,6 @@ public class ElevatorInterac : MonoBehaviour
     public AudioSource plant;
     public AudioSource ElevatorAmbience;
     AudioSource LaserFx;
-
-    public bool isSelected = false;
 
     // public SoundManager soundManager;
 
@@ -51,10 +49,6 @@ public class ElevatorInterac : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isSelected)
-            return;
-
-
         if (other.gameObject.tag == "Interactables")
         {
             if (OnClickedBtn != null)
@@ -66,6 +60,8 @@ public class ElevatorInterac : MonoBehaviour
     {
         for (int i = 0; i < rendererList.Count; i++)
             rendererList[i].material.SetColor("_EmissionColor", new Color(255, 0, 0));
+
+        isInteractionEnd = true;
 
     }
 
