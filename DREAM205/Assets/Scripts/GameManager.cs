@@ -34,9 +34,10 @@ public class GameManager : MonoBehaviour
         Sound.Stop();
     }
 
-    private void Start()
+    private void Awake()
     {
-        soundManager.OnSoundPlayEnd += ButtonOrder;
+        //soundManager.OnSoundPlayEnd += ButtonOrder;
+        closed.GetComponent<InteractableObj>().OnExecuteInteract += ButtonOrder;
         closed.gameObject.GetComponent<BoxCollider>().enabled = false;
         secondFloor.gameObject.GetComponent<BoxCollider>().enabled = false;
         fifthFloor.gameObject.GetComponent<BoxCollider>().enabled = false;

@@ -23,20 +23,24 @@ public class BtnManager : MonoBehaviour
 
     void OnClickedBtn(E_ElevatorBtnType type)
     {
-        LaserFx.Play();
-        if (isSelected)
+        
+        if (isSelected && type != E_ElevatorBtnType.Close)
             return;
 
-        isSelected = true;
+        if(type != E_ElevatorBtnType.Close)
+            isSelected = true;
+
         switch (type)
         {
             case E_ElevatorBtnType.Close:
+                LaserFx.Play();
                 Invoke("AudioPlay", 1f);
                 break;
 
             case E_ElevatorBtnType.Second:
             case E_ElevatorBtnType.Fifth:
             case E_ElevatorBtnType.Fourteenth:
+                LaserFx.Play();
                 Invoke("AudioPlay", 2f);
                 break;
         }
