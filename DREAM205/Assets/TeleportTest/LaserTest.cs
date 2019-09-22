@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //public class WaypointManager
@@ -34,7 +35,7 @@ namespace Valve.VR.Extras
 
         Transform previousContact = null;
         [SerializeField] List<Waypoint> waypoints = new List<Waypoint>();
-        [SerializeField] E_WaypointType presentWaypoint = E_WaypointType.None;
+        [SerializeField] Waypoint presentWaypoint=null;
 
 
         private void Start()
@@ -47,6 +48,7 @@ namespace Valve.VR.Extras
             if (interactWithUI == null)
                 Debug.LogError("No ui interaction action has been set on this component.");
 
+            waypoints = FindObjectsOfType<Waypoint>().ToList();
             laserParent.SetActive(false);
             ShowWaypoint(presentWaypoint);
         }
@@ -117,7 +119,7 @@ namespace Valve.VR.Extras
 
                 float playerYPos = playerTrans.position.y;
                 playerTrans.position = new Vector3(hit.transform.position.x, playerYPos, hit.transform.position.z);
-                presentWaypoint = hit.transform.GetComponent<Waypoint>().WayPointType;
+                presentWaypoint = hit.transform.GetComponent<Waypoint>();
                 ShowWaypoint(presentWaypoint);
                 
             }
@@ -144,17 +146,24 @@ namespace Valve.VR.Extras
             }
         }
 
-        void ShowWaypoint(E_WaypointType present)
+        void ShowWaypoint(Waypoint present)
         {
             for (int i = 0; i < waypoints.Count; i++)
             {
+                if(present == null)
+                {
+                    if (waypoints[i].IsStartPoint)
+                    {
+                        waypoints[i].gameObject.SetActive(true);
+                        continue;
+                    }
+                }
+
                 // 현재위치를 기준으로 앞, 뒤, 제자리만 활성화
-                if (waypoints[i].WayPointType - 1 == present
-                || waypoints[i].WayPointType + 1 == present 
-                || waypoints[i].WayPointType == present)
+                else if(present != null && present.connectedWayPointList.Contains(waypoints[i]))
                 {
                     waypoints[i].gameObject.SetActive(true);
-                    waypoints[i].ActivateCollider(waypoints[i].WayPointType != present);
+                    waypoints[i].ActivateCollider(waypoints[i].GetHashCode() != present.GetHashCode());
                     continue;
                 }
 
