@@ -1,20 +1,41 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+
+public enum E_ElevatorBtnType
+{
+    None,
+    Close,
+    Second,
+    Fifth,
+    Fourteenth,
+}
+
 public class ElevatorInterac : MonoBehaviour
 {
+    /*새로 추가된 코드*/
+    public E_ElevatorBtnType BtnType;
+    public Action<E_ElevatorBtnType> OnClickedBtn { get; set; }
+    /*-------------------*/
+
+
     public GameManager gameManager;
-    AudioSource LaserFx;
+
     public AudioSource plant;
     public AudioSource ElevatorAmbience;
-    
-   // public SoundManager soundManager;
+    AudioSource LaserFx;
+
+    public bool isSelected = false;
+
+    // public SoundManager soundManager;
 
     //public GameObject secondFloor;
-   // public GameObject fifthFloor;
-   // public GameObject fourteen;
+    // public GameObject fifthFloor;
+    // public GameObject fourteen;
 
     // public MeshRenderer m_mesh;
     // public AudioSource sound;
@@ -30,42 +51,23 @@ public class ElevatorInterac : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isSelected)
+            return;
+
+
         if (other.gameObject.tag == "Interactables")
         {
-            Debug.LogError("FloorNumber");
-            LaserFx.Play();
-            // var Sound = GameObject.FindWithTag("Sound");
-            // Instantiate(Sphere, Cubes.transform.position, Quaternion.identity);
-            // Destroy(Sound);
-
-            //gameManager.CreateMaggot(transform.position);
-            // gameManager.RemoveSound(sound);
-            // gameManager.m_RemoveObj(gameObject);
-
-            //gameManager.EmissionOn(m_mesh);
-            //GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(255, 0, 0));
-            for (int i = 0; i < rendererList.Count; i++)
-                rendererList[i].material.SetColor("_EmissionColor", new Color(255, 0, 0));
-
-        }
-        if (other.gameObject.name=="close")
-        {
-            plant.Play();
-        }
-
-        if (other.gameObject.name == "no2")
-        {
-            
+            if (OnClickedBtn != null)
+                OnClickedBtn(BtnType);
         }
     }
 
-   /* private void Update()
+    public void ActivateColor()
     {
-        if (true)
-        {
-            secondFloor.gameObject.GetComponent<BoxCollider>().enabled = false;
-        }
+        for (int i = 0; i < rendererList.Count; i++)
+            rendererList[i].material.SetColor("_EmissionColor", new Color(255, 0, 0));
 
-    }*/
+    }
+
 
 }
