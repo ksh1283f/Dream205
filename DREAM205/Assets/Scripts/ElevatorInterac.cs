@@ -20,6 +20,9 @@ public class ElevatorInterac : InteractableObj
     /*새로 추가된 코드*/
     public E_ElevatorBtnType BtnType;
     public Action<E_ElevatorBtnType> OnClickedBtn { get; set; }
+
+    public InteractableObj[] connectedInteractableObjs;
+    bool isContainedConnectedObj { get { return connectedInteractableObjs != null && connectedInteractableObjs.Length > 0; } }
     /*-------------------*/
 
 
@@ -38,14 +41,26 @@ public class ElevatorInterac : InteractableObj
     // public MeshRenderer m_mesh;
     // public AudioSource sound;
     private List<Renderer> rendererList = new List<Renderer>();
-    private void Start()
+    private void Awake()
     {
         LaserFx = GetComponent<AudioSource>();
         rendererList.Add(GetComponent<Renderer>());
         if (rendererList[0] == null)
             rendererList = GetComponentsInChildren<Renderer>().ToList();
-    }
 
+        if (isContainedConnectedObj)
+        {
+            for (int i = 0; i < connectedInteractableObjs.Length; i++)
+            {
+                if (connectedInteractableObjs[i] == null)
+                {
+                    Debug.LogError("connectedInteractableObjs is null, index: " + i);
+                    continue;
+                }
+                connectedInteractableObjs[i].OnExecutedConnectedObjAction += OnExecutedObjAction;
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -61,9 +76,17 @@ public class ElevatorInterac : InteractableObj
         for (int i = 0; i < rendererList.Count; i++)
             rendererList[i].material.SetColor("_EmissionColor", new Color(255, 0, 0));
 
-        isInteractionEnd = true;
+        if (!IsInteractionEnd)
+            isInteractionEnd = true;
 
+        // 연관된 인터렉션 오브젝트가 있는경우 연관된 오브젝트들도 같이 완료되었다고 알려주기
+        if (isContainedConnectedObj && OnExecutedConnectedObjAction != null)
+            OnExecutedConnectedObjAction();
     }
 
-
+    private void OnExecutedObjAction()
+    {
+        if (!IsInteractionEnd)
+            isInteractionEnd = true;
+    }
 }

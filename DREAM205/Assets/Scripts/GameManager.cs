@@ -36,33 +36,26 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //soundManager.OnSoundPlayEnd += ButtonOrder;
-        closed.GetComponent<InteractableObj>().OnExecuteInteract += ButtonOrder;
+        closed.GetComponent<InteractableObj>().OnExecuteInteract += CloseButtonOrder;
+        secondFloor.gameObject.GetComponent<InteractableObj>().OnExecuteInteract += FloorButtonOrder;
+        fifthFloor.gameObject.GetComponent<InteractableObj>().OnExecuteInteract = FloorButtonOrder;
+        fourteen.gameObject.GetComponent<InteractableObj>().OnExecuteInteract = FloorButtonOrder;
+
         closed.gameObject.GetComponent<BoxCollider>().enabled = false;
         secondFloor.gameObject.GetComponent<BoxCollider>().enabled = false;
         fifthFloor.gameObject.GetComponent<BoxCollider>().enabled = false;
         fourteen.gameObject.GetComponent<BoxCollider>().enabled = false;
-
     }
 
-    private void ButtonOrder()
-    {  
-            closed.gameObject.GetComponent<BoxCollider>().enabled = true;
-    }
-
-    private void Update()
+    private void CloseButtonOrder()
     {
-        if (true)//audioSource.time>0//"~원하는 층수를 눌러주세요" 재생 종료 체크
-        {
-            secondFloor.gameObject.GetComponent<BoxCollider>().enabled = true;
-            fifthFloor.gameObject.GetComponent<BoxCollider>().enabled = true;
-            fourteen.gameObject.GetComponent<BoxCollider>().enabled = true;
-        }
+        closed.gameObject.GetComponent<BoxCollider>().enabled = true;
     }
-    
 
-    // public void EmissionOn(MeshRenderer number)
-    // {
-    //     number.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(255, 0, 0));
-    // }
+    private void FloorButtonOrder()
+    {
+        secondFloor.gameObject.GetComponent<BoxCollider>().enabled = true;
+        fifthFloor.gameObject.GetComponent<BoxCollider>().enabled = true;
+        fourteen.gameObject.GetComponent<BoxCollider>().enabled = true;
+    }
 }

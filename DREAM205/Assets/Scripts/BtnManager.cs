@@ -34,14 +34,14 @@ public class BtnManager : MonoBehaviour
         {
             case E_ElevatorBtnType.Close:
                 LaserFx.Play();
-                Invoke("AudioPlay", 1f);
+                //Invoke("AudioPlay", 1f);
                 break;
 
             case E_ElevatorBtnType.Second:
             case E_ElevatorBtnType.Fifth:
             case E_ElevatorBtnType.Fourteenth:
                 LaserFx.Play();
-                Invoke("AudioPlay", 2f);
+                //Invoke("AudioPlay", 2f);
                 break;
         }
 

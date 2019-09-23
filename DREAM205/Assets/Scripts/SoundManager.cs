@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class DirectingData
 {
     public AudioSource source;
-    public InteractableObj interactableObj;
+    public InteractableObj[] interactableObj;
     public float delayTime; // 연출을 바로하지 않고 조금 있다가 해야할 때
     public string description;
 }
@@ -77,7 +77,7 @@ public class SoundManager : MonoBehaviour
             if (DataList[i].delayTime > 0f)
                 yield return new WaitForSeconds(DataList[i].delayTime);
 
-            if(DataList[i].source!= null)
+            if (DataList[i].source != null)
                 DataList[i].source.Play();
 
             if (OnSoundStart != null)
@@ -89,13 +89,27 @@ public class SoundManager : MonoBehaviour
             if (OnSoundEnd != null)
                 OnSoundEnd(i);  // 이미지 사라짐
 
-            // 연출중에 상호작용해야 할 오브젝트가 있는 경우
-            if (DataList[i].interactableObj != null && DataList[i].interactableObj.OnExecuteInteract != null)
-                DataList[i].interactableObj.OnExecuteInteract();
+            for (int j = 0; j < DataList[i].interactableObj.Length; j++)
+            {
+                if(DataList[i].interactableObj != null && DataList[i].interactableObj.Length > 0)
+                {
+                    // 연출중에 상호작용해야 할 오브젝트가 있는 경우
+                    if (DataList[i].interactableObj[j] != null && DataList[i].interactableObj[j].OnExecuteInteract != null)
+                        DataList[i].interactableObj[j].OnExecuteInteract();
+                }
+            }
 
-            // 상호작용이 끝날때까지 기다림
-            while (DataList[i].interactableObj != null && DataList[i].interactableObj.IsInteractionEnd == false)
-                yield return null;                   
+            if(DataList[i].interactableObj != null && DataList[i].interactableObj.Length > 0)
+            {
+                // 상호작용이 끝날때까지 기다림
+                // 일반적으로는 interactableObj가 1개이나 특수한 경우에는 여러개일 수 있음
+                // 따라서 두가지 경우를 충족하기 위해 첫번째 요소만 검사
+                while (DataList[i].interactableObj[0] != null && DataList[i].interactableObj[0].IsInteractionEnd == false)
+                    yield return null;
+            }
         }
+
+        if (OnSoundPlayEnd != null)
+            OnSoundPlayEnd();   // FO, 다음씬 로드
     }
 }

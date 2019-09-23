@@ -22,7 +22,12 @@ public class UIManager : MonoBehaviour
         soundManager.OnSoundEnd += HideImage;
 
         for (int i = 0; i < imageList.Count; i++)   // 처음엔 안보이게 초기화
+        {
+            if (imageList[i] == null)
+                continue;
+
             imageList[i].gameObject.SetActive(false);
+        }
     }
 
     void ShowImage(int index)
