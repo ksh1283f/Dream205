@@ -11,6 +11,7 @@ public class DirectingData
     public InteractableObj[] interactableObj;
     public float delayTime; // 연출을 바로하지 않고 조금 있다가 해야할 때
     public string description;
+    public bool isShowTextByEnd;
 }
 
 public class SoundManager : MonoBehaviour
@@ -86,8 +87,11 @@ public class SoundManager : MonoBehaviour
             while (DataList[i].source != null && DataList[i].source.isPlaying)
                 yield return null;
 
-            if (OnSoundEnd != null)
-                OnSoundEnd(i);  // 이미지 사라짐
+            if(!DataList[i].isShowTextByEnd)
+            {
+                if (OnSoundEnd != null)
+                    OnSoundEnd(i);  // 이미지 사라짐
+            }
 
             for (int j = 0; j < DataList[i].interactableObj.Length; j++)
             {
@@ -106,10 +110,18 @@ public class SoundManager : MonoBehaviour
                 // 따라서 두가지 경우를 충족하기 위해 첫번째 요소만 검사
                 while (DataList[i].interactableObj[0] != null && DataList[i].interactableObj[0].IsInteractionEnd == false)
                     yield return null;
+
+                if (DataList[i].isShowTextByEnd)
+                {
+                    if (OnSoundEnd != null)
+                        OnSoundEnd(i);  // 이미지 사라짐
+                }
             }
         }
 
         if (OnSoundPlayEnd != null)
             OnSoundPlayEnd();   // FO, 다음씬 로드
+
+        Debug.Log("Directing end");
     }
 }
