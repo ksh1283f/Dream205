@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class DoorOpen : MonoBehaviour
 {
-    private Animation DoorAni;
+    public Animation DoorAni;
+    public Animation LightOff;
+    public AudioSource DoorSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        DoorAni = GetComponent<Animation>();
+       // DoorAni = GetComponent<Animation>();
     }
 
     void OnTriggerEnter(Collider col)
@@ -18,7 +20,13 @@ public class DoorOpen : MonoBehaviour
         if (col.gameObject.name==("Controller (left)"))
         {
             DoorAni.Play();
+            DoorSound.Play();
         }
+    }
+
+    void Flicker()
+    {
+        LightOff.Play();
     }
 
     void SceneLoading()
