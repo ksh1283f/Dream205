@@ -47,11 +47,11 @@ public class DoorOpen : MonoBehaviour
 
         float volume = phoneRing.volume;
         float startTime = 0;
-        volume = Mathf.Lerp(0.173f, 0, startTime);
+        volume = Mathf.Lerp(1f, 0, startTime);
         while (volume > 0f)
         {
             startTime += Time.deltaTime / fadeDuration;
-            volume = Mathf.Lerp(0.173f, 0, startTime);
+            volume = Mathf.Lerp(1f, 0, startTime);
             phoneRing.volume = volume;
 
             yield return null;

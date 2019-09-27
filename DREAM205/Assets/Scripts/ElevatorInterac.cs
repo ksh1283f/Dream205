@@ -26,7 +26,7 @@ public class ElevatorInterac : InteractableObj
     /*-------------------*/
 
 
-    public GameManager gameManager;
+    public GameManager_Elevator gameManager;
 
     public AudioSource plant;
     public AudioSource ElevatorAmbience;

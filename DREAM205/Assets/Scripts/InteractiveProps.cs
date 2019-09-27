@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BeautifulDissolves;
+
 
 public class InteractiveProps : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class InteractiveProps : MonoBehaviour
     // private AudioSource Sound;
     public GameManager gameManager;
     public AudioSource sound;
+    public Dissolve m_dissolve;
+    DissolveSettings m_DissolveSettings;
 
 
     private void OnTriggerEnter(Collider other)
@@ -20,8 +24,13 @@ public class InteractiveProps : MonoBehaviour
             // Destroy(Sound);
             gameManager.CreateMaggot(transform.position);
             gameManager.RemoveSound(sound);
-            gameManager.m_RemoveObj(gameObject);
+            //  gameManager.m_RemoveObj();
+            m_dissolve.TriggerDissolve();
         }
+    }
 
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }
