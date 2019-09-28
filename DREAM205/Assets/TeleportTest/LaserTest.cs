@@ -30,12 +30,14 @@ namespace Valve.VR.Extras
         public event PointerEventHandler PointerOut;
         public event PointerEventHandler PointerClick;
         public GameObject gameManager;
+        public Laser laserObj;
         [SerializeField] Transform playerTrans;
         [SerializeField] Transform playerCameraTrans;
 
         Transform previousContact = null;
         [SerializeField] List<Waypoint> waypoints = new List<Waypoint>();
         [SerializeField] Waypoint presentWaypoint=null;
+        
 
 
         private void Start()
@@ -124,7 +126,7 @@ namespace Valve.VR.Extras
                 
             }
 
-            if (interactWithUI != null && interactWithUI.GetState(pose.inputSource))
+            if (interactWithUI != null && interactWithUI.GetStateDown(pose.inputSource))
             {
                 Debug.LogError("interactWithUI != null && interactWithUI.GetState(pose.inputSource)");
                 if (bHit && hit.distance < 100f)    // 레이저에 뭔가 닿았고, 물체와 컨트롤러 사이의 거리가 100 미만일 때
@@ -137,12 +139,16 @@ namespace Valve.VR.Extras
                 if (laserParent != null && !laserParent.gameObject.activeSelf)
                     laserParent.gameObject.SetActive(true);
             }
-            else
+            else if (interactWithUI != null && interactWithUI.GetStateUp(pose.inputSource))
             {
                 Debug.LogError("else");
                 laserParent.transform.localScale = new Vector3(thickness, thickness, dist);
                 if (laserParent != null && laserParent.gameObject.activeSelf)
+                {
                     laserParent.gameObject.SetActive(false);
+                    laserObj.isInteracted = false;
+                }
+                    
             }
         }
 
