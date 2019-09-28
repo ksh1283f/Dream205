@@ -14,7 +14,7 @@ public class DirectingData
     public bool isShowTextByEnd;
 }
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singletone<SoundManager>
 {
     public Action<int> OnSoundStart { get; set; }
     public Action<int> OnSoundEnd { get; set; }
@@ -29,7 +29,7 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))    // 엘베씬일때만 쓰도록 처리가 필요
         {
             if (!isStart)
             {
@@ -66,9 +66,12 @@ public class SoundManager : MonoBehaviour
 
     public IEnumerator IntroSoundPlay()
     {
-        StartFo.Play();
-        while (StartFo.isPlaying)
-            yield return null;
+        if (StartFo != null)
+        {
+            StartFo.Play();
+            while (StartFo.isPlaying)
+                yield return null;
+        }
 
         yield return new WaitForSeconds(4f);
 
@@ -87,7 +90,7 @@ public class SoundManager : MonoBehaviour
             while (DataList[i].source != null && DataList[i].source.isPlaying)
                 yield return null;
 
-            if(!DataList[i].isShowTextByEnd)
+            if (!DataList[i].isShowTextByEnd)
             {
                 if (OnSoundEnd != null)
                     OnSoundEnd(i);  // 이미지 사라짐
@@ -95,7 +98,7 @@ public class SoundManager : MonoBehaviour
 
             for (int j = 0; j < DataList[i].interactableObj.Length; j++)
             {
-                if(DataList[i].interactableObj != null && DataList[i].interactableObj.Length > 0)
+                if (DataList[i].interactableObj != null && DataList[i].interactableObj.Length > 0)
                 {
                     // 연출중에 상호작용해야 할 오브젝트가 있는 경우
                     if (DataList[i].interactableObj[j] != null && DataList[i].interactableObj[j].OnExecuteInteract != null)
@@ -103,7 +106,7 @@ public class SoundManager : MonoBehaviour
                 }
             }
 
-            if(DataList[i].interactableObj != null && DataList[i].interactableObj.Length > 0)
+            if (DataList[i].interactableObj != null && DataList[i].interactableObj.Length > 0)
             {
                 // 상호작용이 끝날때까지 기다림
                 // 일반적으로는 interactableObj가 1개이나 특수한 경우에는 여러개일 수 있음

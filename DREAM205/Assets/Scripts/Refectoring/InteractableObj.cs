@@ -10,9 +10,5 @@ public class InteractableObj : MonoBehaviour
     public Action OnExecuteInteract { get; set; }
     public Action OnExecutedConnectedObjAction { get; set; }
     
-    protected virtual void Start()
-    {
-        
-    }
 
 }
