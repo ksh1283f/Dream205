@@ -27,10 +27,16 @@ namespace BeautifulDissolves {
 			return renderer != null ? renderer.materials : null;
 		}
 
-		void Awake()
-		{
-			m_Materials = GetMaterials ();
-		}
+        void Awake()
+        {
+            m_Materials = GetMaterials();
+        }
+
+        public void TriggerDissolve(Material mat)
+        {
+            m_Materials[0] = mat;
+            TriggerDissolve(m_DissolveSettings);
+        }
 
 		public void TriggerDissolve()
 		{
@@ -61,6 +67,7 @@ namespace BeautifulDissolves {
 			if (m_Materials != null && m_Materials.Length > 0) {
 				m_Dissolving = true;
 				InvokeDissolveStartEvents ();
+                Debug.LogError(m_Materials[0].name);
 				StartCoroutine(DissolveHelper.CurveDissolve(m_Materials, dissolveCurve, time, dissolveStartPercent, speed, () => {
 					m_Dissolving = false;
 					InvokeDissolveEndEvents();

@@ -15,7 +15,6 @@ public class InteractiveProps : MonoBehaviour
     DissolveSettings m_DissolveSettings;
     public Material m_material;
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Interactables")
@@ -25,10 +24,10 @@ public class InteractiveProps : MonoBehaviour
             // Destroy(Sound);
             gameManager.CreateMaggot(transform.position);
             gameManager.RemoveSound(sound);
-            //  gameManager.m_RemoveObj();
+            //gameManager.m_RemoveObj();
             GetComponent<MeshRenderer>().material = m_material;
-            m_dissolve.TriggerDissolve();
-            
+            m_dissolve.TriggerDissolve(m_material);
+
         }
     }
 
