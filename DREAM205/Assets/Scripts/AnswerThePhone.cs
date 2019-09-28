@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnswerThePhone : InteractableObj
 {
     AudioSource m_audioSource;
+    public AudioSource phoneRing;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class AnswerThePhone : InteractableObj
     {
         if (transform.position.y > 1f)
         {
+            phoneRing.Stop();
             m_audioSource.Play();
             isInteractionEnd = true;
         }
