@@ -13,6 +13,7 @@ public class InteractiveProps : MonoBehaviour
     public AudioSource sound;
     public Dissolve m_dissolve;
     DissolveSettings m_DissolveSettings;
+    public Material m_material;
 
 
     private void OnTriggerEnter(Collider other)
@@ -25,7 +26,9 @@ public class InteractiveProps : MonoBehaviour
             gameManager.CreateMaggot(transform.position);
             gameManager.RemoveSound(sound);
             //  gameManager.m_RemoveObj();
+            GetComponent<MeshRenderer>().material = m_material;
             m_dissolve.TriggerDissolve();
+            
         }
     }
 
