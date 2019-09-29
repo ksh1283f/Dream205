@@ -9,6 +9,7 @@ public class GameManager_Room2 : Singletone<GameManager_Room2>
     [SerializeField] Transform spiderTransFromRadio;
     [SerializeField] Transform spiderTransFromCloset;
     [SerializeField] Transform spiderTransFromCusion;
+    [SerializeField] Transform spiderTransFromDrawing;
 
     public GameObject Maggot;
 
@@ -33,6 +34,10 @@ public class GameManager_Room2 : Singletone<GameManager_Room2>
 
             case E_RoomInteractObjType.Cusion:
                 pos = spiderTransFromCusion.position;
+                break;
+
+            case E_RoomInteractObjType.Drawing:
+                pos = spiderTransFromDrawing.position;
                 break;
 
             default:

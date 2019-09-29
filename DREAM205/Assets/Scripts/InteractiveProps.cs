@@ -9,8 +9,8 @@ public enum E_RoomInteractObjType
     Radio,
     Closet,
     Cusion,
+    Drawing,
 }
-
 
 public class InteractiveProps : InteractableObj
 {
