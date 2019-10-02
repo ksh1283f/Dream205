@@ -99,7 +99,7 @@ namespace BeautifulDissolves {
 				// Clean up material instance
 				for (int i = 0; i < m_Materials.Length; i++) {
 					if (m_Materials[i] != null) {
-						Destroy(m_Materials[i]);
+						//Destroy(m_Materials[i]);
 					}
 				}
 			}

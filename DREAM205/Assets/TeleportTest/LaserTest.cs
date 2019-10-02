@@ -37,6 +37,7 @@ namespace Valve.VR.Extras
         Transform previousContact = null;
         [SerializeField] List<Waypoint> waypoints = new List<Waypoint>();
         [SerializeField] Waypoint presentWaypoint=null;
+        [SerializeField] Waypoint startWayPoint = null;
         
 
 
@@ -52,6 +53,7 @@ namespace Valve.VR.Extras
 
             waypoints = FindObjectsOfType<Waypoint>().ToList();
             laserParent.SetActive(false);
+            SetCharacterOnWayPoint(startWayPoint, true);
             ShowWaypoint(presentWaypoint);
         }
 
@@ -106,8 +108,8 @@ namespace Valve.VR.Extras
             Ray raycast = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             bool bHit = Physics.Raycast(raycast, out hit, dist, (-1) - (1 << 9));
-            if(hit.transform != null)
-                Debug.LogError("hit tag: " + hit.transform.tag);
+            //if(hit.transform != null)
+            //    Debug.LogError("hit tag: " + hit.transform.tag);
 
 
             
@@ -115,24 +117,24 @@ namespace Valve.VR.Extras
             // 텔레포트
             if (Teleport != null && Teleport.GetStateDown(pose.inputSource))
             {
-                Debug.LogError("Teleport");
+                //Debug.LogError("Teleport");
                 if (hit.transform == null || !hit.transform.CompareTag("WayPoint"))
                     return;
 
                 float playerYPos = playerTrans.position.y;
                 playerTrans.position = new Vector3(hit.transform.position.x, playerYPos, hit.transform.position.z);
-                presentWaypoint = hit.transform.GetComponent<Waypoint>();
-                ShowWaypoint(presentWaypoint);
-                
+
+                Waypoint hitWaypoint = hit.transform.GetComponent<Waypoint>();
+                SetCharacterOnWayPoint(hitWaypoint);
             }
 
             if (interactWithUI != null && interactWithUI.GetStateDown(pose.inputSource))
             {
-                Debug.LogError("interactWithUI != null && interactWithUI.GetState(pose.inputSource)");
+                //Debug.LogError("interactWithUI != null && interactWithUI.GetState(pose.inputSource)");
                 if (bHit && hit.distance < 100f)    // 레이저에 뭔가 닿았고, 물체와 컨트롤러 사이의 거리가 100 미만일 때
                 {
                     dist = hit.distance;
-                    Debug.LogError("bHit && hit.distance < 100f, dist: " + dist + " hit object: " + hit.transform.gameObject.name);
+                   // Debug.LogError("bHit && hit.distance < 100f, dist: " + dist + " hit object: " + hit.transform.gameObject.name);
                 }
 
                 laserParent.transform.localScale = new Vector3(thickness * 15f, thickness * 15f, dist);
@@ -156,17 +158,8 @@ namespace Valve.VR.Extras
         {
             for (int i = 0; i < waypoints.Count; i++)
             {
-                if(present == null)
-                {
-                    if (waypoints[i].IsStartPoint)
-                    {
-                        waypoints[i].gameObject.SetActive(true);
-                        continue;
-                    }
-                }
-
                 // 현재위치를 기준으로 앞, 뒤, 제자리만 활성화
-                else if(present != null && present.connectedWayPointList.Contains(waypoints[i]))
+                if(present != null && present.connectedWayPointList.Contains(waypoints[i]))
                 {
                     waypoints[i].gameObject.SetActive(true);
                     waypoints[i].ActivateCollider(waypoints[i].GetHashCode() != present.GetHashCode());
@@ -175,6 +168,21 @@ namespace Valve.VR.Extras
 
                 waypoints[i].gameObject.SetActive(false);
             }
+        }
+
+        void SetCharacterOnWayPoint(Waypoint start, bool isInit = false)
+        {
+            if(start == null)
+            {
+                Debug.LogError("StartWaypoint is null");
+                return;
+            }
+
+            presentWaypoint = start;
+            ShowWaypoint(presentWaypoint);
+
+            if(isInit)
+                playerTrans.position = new Vector3(start.transform.position.x, playerTrans.position.y, start.transform.position.z);
         }
     }
 }

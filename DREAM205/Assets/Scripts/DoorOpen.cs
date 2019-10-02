@@ -3,24 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DoorOpen : MonoBehaviour
+public class DoorOpen : InteractableObj
 {
     public Animation DoorAni;
     public Animation LightOff;
     public AudioSource DoorSound;
+    [SerializeField] Material GlowMaterial;
     [SerializeField] AudioSource phoneRing;
     [SerializeField] float fadeDuration;
+    [SerializeField] bool isNeedInactiveCol;
+    [SerializeField] Renderer propsRenderer;
+    private Collider doorCol;
 
     // Start is called before the first frame update
     void Start()
     {
-       // DoorAni = GetComponent<Animation>();
+        if (isNeedInactiveCol)
+        {
+            doorCol = GetComponent<Collider>();
+            doorCol.enabled = false;
+        }
+
+        OnExecuteInteract += ActivateGlowMaterial;
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name==("Controller (left)"))
+        if (col.gameObject.name == ("Controller (left)"))
         {
+            isInteractionEnd = true;
             DoorAni.Play();
             DoorSound.Play();
         }
@@ -58,5 +69,29 @@ public class DoorOpen : MonoBehaviour
         }
 
         SceneLoadingManager.Instance.SceneType = E_SceneType.level2Room;
+    }
+
+    public void ActivateGlowMaterial()
+    {
+        if (GlowMaterial == null)
+        {
+            Debug.LogError(string.Concat(gameObject.name, ": glowMaterial is null"));
+            return;
+        }
+
+        if (doorCol == null)
+        {
+            Debug.LogError(string.Concat(gameObject.name, ": glowMaterial is null"));
+            return;
+        }
+
+        if (propsRenderer == null)
+        {
+            Debug.LogError("propsRenderer is null");
+            return;
+        }
+
+        propsRenderer.material = GlowMaterial;
+        doorCol.enabled = true;
     }
 }

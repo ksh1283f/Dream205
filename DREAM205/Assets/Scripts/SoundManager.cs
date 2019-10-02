@@ -29,7 +29,7 @@ public class SoundManager : Singletone<SoundManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))    // 엘베씬일때만 쓰도록 처리가 필요
+        if (Input.GetKeyDown(KeyCode.Space))    // todo 엘베씬일때만 쓰도록 처리가 필요
         {
             if (!isStart)
             {

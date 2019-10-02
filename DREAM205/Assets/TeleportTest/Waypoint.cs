@@ -9,9 +9,6 @@ public class Waypoint : MonoBehaviour
     Collider col;
     public List<Waypoint> connectedWayPointList = new List<Waypoint>();
 
-    [SerializeField] bool isStartPoint;
-    public bool IsStartPoint { get { return isStartPoint; } }
-
     private void Awake()
     {
         col = GetComponent<Collider>();

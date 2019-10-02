@@ -6,10 +6,12 @@ public class GameManager_Room2 : Singletone<GameManager_Room2>
 {
     [SerializeField] AudioSource Sound;
     [SerializeField] float fadeDuration;
+    [SerializeField] float nextSceneDelayTime;
     [SerializeField] Transform spiderTransFromRadio;
     [SerializeField] Transform spiderTransFromCloset;
     [SerializeField] Transform spiderTransFromCusion;
     [SerializeField] Transform spiderTransFromDrawing;
+    [SerializeField] Animation fadeAni;
 
     public GameObject Maggot;
 
@@ -79,6 +81,7 @@ public class GameManager_Room2 : Singletone<GameManager_Room2>
 
     void LoadNextScene()
     {
-        SceneLoadingManager.Instance.SceneType = E_SceneType.level3Room;
+        //SceneLoadingManager.Instance.SceneType = E_SceneType.level3Room;
+        SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level3Room, nextSceneDelayTime, fadeAni);
     }
 }

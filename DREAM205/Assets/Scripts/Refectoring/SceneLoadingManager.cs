@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 
 public enum E_SceneType
 {
@@ -10,10 +11,12 @@ public enum E_SceneType
     level1FrontDoor,
     level2Room,
     level3Room,
+    level4Kitchen,
 }
 
 public class SceneLoadingManager : Singletone<SceneLoadingManager>
 {
+    [SerializeField] SteamVR_LoadLevel vrLoadLevel;
     Coroutine coroutine = null;
 
     private E_SceneType sceneType = E_SceneType.None;
@@ -57,6 +60,43 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
             yield return null;
 
         // 로딩 후 할일
+        coroutine = null;
+    }
+
+    // 딜레이 타임 이후 로딩
+    public void StartSceneLoadingWithDelay(E_SceneType type, float delay, Animation fadeAni = null)
+    {
+        if (coroutine == null)
+            coroutine = StartCoroutine(SceneLoadingWithDelay(type, delay, fadeAni));
+    }
+
+    IEnumerator SceneLoadingWithDelay(E_SceneType type, float delay, Animation fadeAni= null)
+    {
+        // 페이드 효과가 필요한 경우
+        if(fadeAni != null)
+        {
+            fadeAni.Play();
+            while (fadeAni.isPlaying)
+                yield return null;
+        }
+
+        // 딜레이가 있는 경우
+        if(delay > 0)
+            yield return new WaitForSeconds(delay);
+
+        vrLoadLevel.levelName = type.ToString();
+        vrLoadLevel.Trigger();
+        while (SteamVR_LoadLevel.progress < 1)
+            yield return null;
+        
+
+        //AsyncOperation ao = SceneManager.LoadSceneAsync(type.ToString());
+
+        //while (!ao.isDone)
+        //    yield return null;
+
+        // 로딩 후 할일
+        sceneType = type;
         coroutine = null;
     }
 }
