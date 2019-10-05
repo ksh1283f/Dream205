@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Diffuse:
-        m_Texture: {fileID: 2800000, guid: cb34e22b650ebc3448abf5e66fa011a4, type: 3}
+        m_Texture: {fileID: 2800000, guid: d0f18a384bc776d4ab4309a1c3c1e3c9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
@@ -32,11 +32,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 98de3e37666cdda409fe223afac79016, type: 3}
+        m_Texture: {fileID: 2800000, guid: 989512c7bd2602447aa4775a9392157b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Specular:
-        m_Texture: {fileID: 2800000, guid: fde69556760fb7646b35e4d634d67ff2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 43618edecd62aae4ea9ed9e00e0520be, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
