@@ -26,6 +26,7 @@ public class GameManager_Room3 : MonoBehaviour
             yield break;
         }
 
+        flickAni.Play();
         while (flickAni.isPlaying)
             yield return null;
         
