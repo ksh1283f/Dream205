@@ -10,6 +10,9 @@ public enum E_RoomInteractObjType
     Closet,
     Cusion,
     Drawing,
+    Microwave,
+    Hands,
+    Speaker,
 }
 
 public class InteractiveProps : InteractableObj

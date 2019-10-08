@@ -49,4 +49,4 @@ Material:
     - _Specular_Power: 4
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Fresnel_Color: {r: 0.51290494, g: 0.68921113, b: 0.9622642, a: 1}
+    - _Fresnel_Color: {r: 0.9607843, g: 0.5137255, b: 0.6039216, a: 1}

@@ -7,6 +7,8 @@ TagManager:
   - FloorNumber
   - Interactables
   - Grab
+  - WayPoint
+  - handle
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,7 @@ public enum E_SceneType
     level2Room,
     level3Room,
     level4Kitchen,
+    level5Kitchen,
 }
 
 public class SceneLoadingManager : Singletone<SceneLoadingManager>
@@ -35,6 +36,9 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
                 case E_SceneType.level1FrontDoor:
                 case E_SceneType.level2Room:
                 case E_SceneType.level3Room:
+                case E_SceneType.level4Kitchen:
+                case E_SceneType.level5Kitchen:
+
                     StartSceneLoading(sceneType);
                     break;
              
