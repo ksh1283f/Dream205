@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BeautifulDissolves;
+using UnityEngine.SceneManagement;
 
 public enum E_RoomInteractObjType
 {
@@ -45,8 +46,9 @@ public class InteractiveProps : InteractableObj
                 return;
 
             laser.isInteracted = true;
-            GameManager_Room2.Instance.CreateMaggot(objType);
-            GameManager_Room2.Instance.RemoveSound(sound);
+
+            SceneLoadingManager.Instance.PresentGameManager.CreateMaggot(objType);
+            SceneLoadingManager.Instance.PresentGameManager.RemoveSound(sound);
 
             if (objType != E_RoomInteractObjType.Cusion)
                 propsRenderer.material = DissolveMaterial;

@@ -23,19 +23,16 @@ public class ColliderGrbObject : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.LogError("OnTriggerEnter");
         SetCollidingObject(other);
     }
 
     public void OnTriggerStay(Collider other)
     {
-        Debug.LogError("OnTriggerStay");
         SetCollidingObject(other);
     }
 
     public void OnTriggerExit(Collider other)
     {
-        Debug.LogError("OnTriggerExit");
         if (!collidingObject)
         {
             return;

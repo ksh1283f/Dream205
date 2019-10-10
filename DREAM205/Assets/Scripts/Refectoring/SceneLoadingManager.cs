@@ -20,7 +20,7 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
     [SerializeField] SteamVR_LoadLevel vrLoadLevel;
     Coroutine coroutine = null;
 
-    private E_SceneType sceneType = E_SceneType.None;
+    [SerializeField] private E_SceneType sceneType = E_SceneType.None;
     public E_SceneType SceneType
     {
         get { return sceneType; }
@@ -46,9 +46,39 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
         }
     }
 
+    public IGameManager PresentGameManager
+    {
+        get
+        {
+            switch (SceneType)
+            {
+                case E_SceneType.None:
+                    break;
+                case E_SceneType.level0Elevator:
+                    break;
+                case E_SceneType.level1FrontDoor:
+                    break;
+                case E_SceneType.level2Room:
+                    return GameManager_Room2.Instance;
+                    
+                case E_SceneType.level3Room:
+                    break;
+                case E_SceneType.level4Kitchen:
+                    return GameManager_Kitchen4.Instance;
+                    
+                case E_SceneType.level5Kitchen:
+                    break;
+                default:
+                    break;
+            }
+
+            return null;
+        }
+    }
+
     private void Start()
     {
-        sceneType = E_SceneType.level0Elevator; // 정상적으로 플레이한다고 가정했을 때
+       // sceneType = E_SceneType.level0Elevator; // 정상적으로 플레이한다고 가정했을 때
     }
 
     void StartSceneLoading(E_SceneType type)

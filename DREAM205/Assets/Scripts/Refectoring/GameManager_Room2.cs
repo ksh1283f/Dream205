@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager_Room2 : Singletone<GameManager_Room2>
+public class GameManager_Room2 : Singletone<GameManager_Room2>, IGameManager
 {
     [SerializeField] AudioSource Sound;
     [SerializeField] float fadeDuration;
