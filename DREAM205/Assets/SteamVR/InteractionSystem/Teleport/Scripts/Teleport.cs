@@ -7,6 +7,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using System;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -14,7 +15,7 @@ namespace Valve.VR.InteractionSystem
 	public class Teleport : MonoBehaviour
     {
         public SteamVR_Action_Boolean teleportAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Teleport");
-
+        
         public LayerMask traceLayerMask;
 		public LayerMask floorFixupTraceLayerMask;
 		public float floorFixupMaximumTraceDistance = 1.0f;
@@ -123,6 +124,9 @@ namespace Valve.VR.InteractionSystem
 		public static SteamVR_Events.Event< TeleportMarkerBase > PlayerPre = new SteamVR_Events.Event< TeleportMarkerBase >();
 		public static SteamVR_Events.Action< TeleportMarkerBase > PlayerPreAction( UnityAction< TeleportMarkerBase > action ) { return new SteamVR_Events.Action< TeleportMarkerBase >( PlayerPre, action ); }
 
+        // Customized events
+        public Action OnMovedPlayer { get; set; }
+
 		//-------------------------------------------------
 		private static Teleport _instance;
 		public static Teleport instance
@@ -184,7 +188,7 @@ namespace Valve.VR.InteractionSystem
 
 			CheckForSpawnPoint();
 
-			Invoke( "ShowTeleportHint", 5.0f );
+			//Invoke( "ShowTeleportHint", 5.0f );
 		}
 
 
@@ -900,7 +904,7 @@ namespace Valve.VR.InteractionSystem
 			else
 			{
 				teleportingToMarker.TeleportPlayer( pointedAtPosition );
-			}
+            }
 
 			Teleport.Player.Send( pointedAtTeleportMarker );
 		}

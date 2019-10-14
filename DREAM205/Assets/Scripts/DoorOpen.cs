@@ -29,7 +29,7 @@ public class DoorOpen : InteractableObj
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == ("Controller (left)"))
+        if (col.CompareTag("handle"))
         {
             isInteractionEnd = true;
             DoorAni.Play();

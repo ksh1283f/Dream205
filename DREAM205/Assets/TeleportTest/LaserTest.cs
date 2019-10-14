@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
-//public class WaypointManager
-//{
-    
 namespace Valve.VR.Extras
 {
     public class LaserTest : MonoBehaviour
     {
+        
         public SteamVR_Behaviour_Pose pose;
 
         //public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.__actions_default_in_InteractUI;
@@ -35,11 +34,10 @@ namespace Valve.VR.Extras
         [SerializeField] Transform playerCameraTrans;
 
         Transform previousContact = null;
+        [SerializeField] PlayerBody playerBody;
         [SerializeField] List<Waypoint> waypoints = new List<Waypoint>();
         [SerializeField] Waypoint presentWaypoint=null;
         [SerializeField] Waypoint startWayPoint = null;
-        
-
 
         private void Start()
         {
@@ -51,6 +49,10 @@ namespace Valve.VR.Extras
             if (interactWithUI == null)
                 Debug.LogError("No ui interaction action has been set on this component.");
 
+            if (playerBody == null)
+                Debug.LogError("playerBody is null");
+            
+            playerBody.OnMovedPlayer = OnMovedPlayer;
             waypoints = FindObjectsOfType<Waypoint>().ToList();
             laserParent.SetActive(false);
             SetCharacterOnWayPoint(startWayPoint, true);
@@ -114,19 +116,19 @@ namespace Valve.VR.Extras
 
             
 
-            // 텔레포트
-            if (Teleport != null && Teleport.GetStateDown(pose.inputSource))
-            {
-                //Debug.LogError("Teleport");
-                if (hit.transform == null || !hit.transform.CompareTag("WayPoint"))
-                    return;
+            //// 텔레포트
+            //if (Teleport != null && Teleport.GetStateDown(pose.inputSource))
+            //{
+            //    //Debug.LogError("Teleport");
+            //    if (hit.transform == null || !hit.transform.CompareTag("WayPoint"))
+            //        return;
 
-                float playerYPos = playerTrans.position.y;
-                playerTrans.position = new Vector3(hit.transform.position.x, playerYPos, hit.transform.position.z);
+            //    float playerYPos = playerTrans.position.y;
+            //    playerTrans.position = new Vector3(hit.transform.position.x, playerYPos, hit.transform.position.z);
 
-                Waypoint hitWaypoint = hit.transform.GetComponent<Waypoint>();
-                SetCharacterOnWayPoint(hitWaypoint);
-            }
+            //    Waypoint hitWaypoint = hit.transform.GetComponent<Waypoint>();
+            //    SetCharacterOnWayPoint(hitWaypoint);
+            //}
 
             if (interactWithUI != null && interactWithUI.GetStateDown(pose.inputSource))
             {
@@ -152,6 +154,11 @@ namespace Valve.VR.Extras
                 }
                     
             }
+        }
+
+        void OnMovedPlayer(Waypoint wayPoint)
+        {
+            SetCharacterOnWayPoint(wayPoint);
         }
 
         void ShowWaypoint(Waypoint present)
@@ -180,8 +187,12 @@ namespace Valve.VR.Extras
 
             presentWaypoint = start;
             ShowWaypoint(presentWaypoint);
+            float playerHeight = playerTrans.position.y;
+            playerTrans.position = new Vector3(presentWaypoint.transform.position.x,
+                                               playerHeight,
+                                               presentWaypoint.transform.position.z);
 
-            if(isInit)
+            if (isInit)
                 playerTrans.position = new Vector3(start.transform.position.x, playerTrans.position.y, start.transform.position.z);
         }
     }
