@@ -25,10 +25,14 @@ namespace Valve.VR.InteractionSystem
 		private Color lockedTintColor = Color.clear;
 		private bool highlighted = false;
 
+        //customized variables
+        public GameObject parent;
+
 		//-------------------------------------------------
 		public void Awake()
 		{
 			areaMesh = GetComponent<MeshRenderer>();
+            parent = transform.parent.gameObject;
 
 			tintColorId = Shader.PropertyToID( "_TintColor" );
 

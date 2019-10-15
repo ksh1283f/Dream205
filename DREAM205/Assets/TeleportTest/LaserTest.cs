@@ -32,6 +32,7 @@ namespace Valve.VR.Extras
         public Laser laserObj;
         [SerializeField] Transform playerTrans;
         [SerializeField] Transform playerCameraTrans;
+        [SerializeField] Teleport teleport;
 
         Transform previousContact = null;
         [SerializeField] PlayerBody playerBody;
@@ -51,8 +52,15 @@ namespace Valve.VR.Extras
 
             if (playerBody == null)
                 Debug.LogError("playerBody is null");
-            
+
+            teleport = Valve.VR.InteractionSystem.Teleport.instance;
+            if(teleport != null)
+            {
+                Debug.Log("OnPlayerTeleport is connected!");
+                teleport.OnPlayerTeleport += OnPlayerTeleport;
+            }
             playerBody.OnMovedPlayer = OnMovedPlayer;
+
             waypoints = FindObjectsOfType<Waypoint>().ToList();
             laserParent.SetActive(false);
             SetCharacterOnWayPoint(startWayPoint, true);
@@ -113,23 +121,6 @@ namespace Valve.VR.Extras
             //if(hit.transform != null)
             //    Debug.LogError("hit tag: " + hit.transform.tag);
 
-
-            
-
-            //// 텔레포트
-            //if (Teleport != null && Teleport.GetStateDown(pose.inputSource))
-            //{
-            //    //Debug.LogError("Teleport");
-            //    if (hit.transform == null || !hit.transform.CompareTag("WayPoint"))
-            //        return;
-
-            //    float playerYPos = playerTrans.position.y;
-            //    playerTrans.position = new Vector3(hit.transform.position.x, playerYPos, hit.transform.position.z);
-
-            //    Waypoint hitWaypoint = hit.transform.GetComponent<Waypoint>();
-            //    SetCharacterOnWayPoint(hitWaypoint);
-            //}
-
             if (interactWithUI != null && interactWithUI.GetStateDown(pose.inputSource))
             {
                 //Debug.LogError("interactWithUI != null && interactWithUI.GetState(pose.inputSource)");
@@ -156,9 +147,21 @@ namespace Valve.VR.Extras
             }
         }
 
+        void OnPlayerTeleport(TeleportArea area)
+        {
+            Waypoint wayPoint = area.parent.GetComponent<Waypoint>();
+            if(wayPoint == null)
+            {
+                Debug.LogError("Teleport area parent's  waypoint is null");
+                return;
+            }
+
+            SetCharacterOnWayPoint(wayPoint);
+        }
+
         void OnMovedPlayer(Waypoint wayPoint)
         {
-            SetCharacterOnWayPoint(wayPoint);
+            //SetCharacterOnWayPoint(wayPoint);
         }
 
         void ShowWaypoint(Waypoint present)

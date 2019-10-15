@@ -14,6 +14,7 @@ namespace Valve.VR.InteractionSystem
 	//-------------------------------------------------------------------------
 	public class Teleport : MonoBehaviour
     {
+        
         public SteamVR_Action_Boolean teleportAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Teleport");
         
         public LayerMask traceLayerMask;
@@ -125,7 +126,7 @@ namespace Valve.VR.InteractionSystem
 		public static SteamVR_Events.Action< TeleportMarkerBase > PlayerPreAction( UnityAction< TeleportMarkerBase > action ) { return new SteamVR_Events.Action< TeleportMarkerBase >( PlayerPre, action ); }
 
         // Customized events
-        public Action OnMovedPlayer { get; set; }
+        public Action<TeleportArea> OnPlayerTeleport { get; set; }
 
 		//-------------------------------------------------
 		private static Teleport _instance;
@@ -900,6 +901,12 @@ namespace Valve.VR.InteractionSystem
                     player.leftHand.ResetAttachedTransform(player.leftHand.currentAttachedObjectInfo.Value);
                 if (player.rightHand.currentAttachedObjectInfo.HasValue)
                     player.rightHand.ResetAttachedTransform(player.rightHand.currentAttachedObjectInfo.Value);
+
+                if(teleportArea != null)
+                {
+                    if (OnPlayerTeleport != null)
+                        OnPlayerTeleport(teleportArea);
+                }
             }
 			else
 			{
