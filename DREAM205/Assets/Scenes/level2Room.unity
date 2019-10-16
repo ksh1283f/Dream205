@@ -776,34 +776,40 @@ MonoBehaviour:
   SoundList: []
   DataList:
   - source: {fileID: 0}
+    ani: {fileID: 0}
     interactableObj:
     - {fileID: 328135834}
     delayTime: 3
     description: "\uB77C\uB514\uC624\uB97C \uC870\uC900"
     isShowTextByEnd: 0
   - source: {fileID: 0}
+    ani: {fileID: 0}
     interactableObj:
     - {fileID: 287191205}
     delayTime: 0
     description: "\uCFE0\uC158\uC744 \uC870\uC900"
     isShowTextByEnd: 0
   - source: {fileID: 0}
+    ani: {fileID: 0}
     interactableObj:
     - {fileID: 3006811052950556842}
     delayTime: 0
     description: "\uADF8\uB9BC\uC744 \uC870\uC900"
     isShowTextByEnd: 0
   - source: {fileID: 10760190}
+    ani: {fileID: 0}
     interactableObj:
     - {fileID: 1570442238}
     delayTime: 0
     description: "\uC637\uC7A5\uC744 \uC870\uC900(\uB450\uB4DC\uB9AC\uB294 \uC18C\uB9AC)"
     isShowTextByEnd: 0
   - source: {fileID: 1844380380}
+    ani: {fileID: 0}
     interactableObj: []
     delayTime: 1
     description: "\uC804\uD654\uBCA8 \uC18C\uB9AC \uC6B8\uB9AC\uAE30+\uB2E4\uC74C"
     isShowTextByEnd: 0
+  dataIndex: 0
 --- !u!4 &159254387
 Transform:
   m_ObjectHideFlags: 0
@@ -9618,9 +9624,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4160533db76256d49904b2a98ad29040, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 74039e52bc7fcb34a9f70803f827ac96, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.497
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
