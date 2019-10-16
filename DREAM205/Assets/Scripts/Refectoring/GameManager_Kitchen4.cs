@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager_Kitchen4 : Singletone<GameManager_Kitchen4>, IGameManager
+public class GameManager_Kitchen4 : Singletone<GameManager_Kitchen4>, IGameManagerInteract
 {
     [SerializeField] AudioSource Sound;
     [SerializeField] float fadeDuration;

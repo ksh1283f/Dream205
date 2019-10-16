@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IGameManager
+public interface IGameManagerInteract
 {
     void CreateMaggot(E_RoomInteractObjType type);
     void RemoveSound(AudioSource audio);

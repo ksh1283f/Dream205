@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class DirectingData
 {
     public AudioSource source;
+    public Animation ani;
     public InteractableObj[] interactableObj;
     public float delayTime; // 연출을 바로하지 않고 조금 있다가 해야할 때
     public string description;
@@ -40,30 +41,6 @@ public class SoundManager : Singletone<SoundManager>
 
     }
 
-    public IEnumerator SoundPlay()
-    {
-        StartFo.Play();
-        while (StartFo.isPlaying)
-            yield return null;
-
-        yield return new WaitForSeconds(4f);
-
-        for (int i = 0; i < SoundList.Count; i++)
-        {
-            SoundList[i].Play();
-            if (OnSoundStart != null)
-                OnSoundStart(i);
-
-            while (SoundList[i].isPlaying)
-                yield return null;
-
-            if (OnSoundEnd != null)
-                OnSoundEnd(i);
-        }
-        if (OnSoundPlayEnd != null)
-            OnSoundPlayEnd();
-    }
-
     public IEnumerator IntroSoundPlay()
     {
         if (StartFo != null)
@@ -87,15 +64,23 @@ public class SoundManager : Singletone<SoundManager>
             if (OnSoundStart != null)
                 OnSoundStart(i);    // // 이미지 보임
 
+            if (DataList[i].ani != null)
+                DataList[i].ani.Play();
+            
+            // 사운드
             while (DataList[i].source != null && DataList[i].source.isPlaying)
                 yield return null;
 
-            if (!DataList[i].isShowTextByEnd)
+            while (DataList[i].ani != null && DataList[i].ani.isPlaying)
+                yield return null;
+
+            if (!DataList[i].isShowTextByEnd)   // 인터랙션까지 이미지를 보여줘야되는게 아닌 경우
             {
                 if (OnSoundEnd != null)
                     OnSoundEnd(i);  // 이미지 사라짐
             }
 
+            // 인터랙션을 위한 초기화
             for (int j = 0; j < DataList[i].interactableObj.Length; j++)
             {
                 if (DataList[i].interactableObj != null && DataList[i].interactableObj.Length > 0)
@@ -126,5 +111,38 @@ public class SoundManager : Singletone<SoundManager>
             OnSoundPlayEnd();   // FO, 다음씬 로드
 
         Debug.Log("Directing end");
+    }
+
+    /* --------------------- 에디터 상에서 데이터 편집용 ---------------------*/
+    public int dataIndex;
+
+    /// <summary>
+    /// 맨 끝에 데이터를 추가
+    /// </summary>
+    public void InsertData()
+    {
+        DataList.Add(new DirectingData());
+    }
+    
+    /// <summary>
+    /// 넣고싶은 데이터를 원하는 인덱스의 위치에 추가
+    /// </summary>
+    public void InsertDataAtDataIndex()
+    {
+        DataList.Insert(dataIndex, new DirectingData());
+    }
+
+    /// <summary>
+    /// 없애고 싶은 데이터를 제거
+    /// </summary>
+    public void RemoveData()
+    {
+        if(DataList.Count == 0)
+        {
+            Debug.LogError("DataList is empty");
+            return;
+        }
+
+        DataList.RemoveAt(dataIndex);
     }
 }

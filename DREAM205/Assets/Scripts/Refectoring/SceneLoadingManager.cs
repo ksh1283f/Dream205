@@ -16,6 +16,7 @@ public enum E_SceneType
     level6Bathroom,
     level7Bathroom,
     level8Elevator,
+    endingScene,
 }
 
 public class SceneLoadingManager : Singletone<SceneLoadingManager>
@@ -52,7 +53,7 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
         }
     }
 
-    public IGameManager PresentGameManager
+    public IGameManagerInteract PresentGameManager
     {
         get
         {
