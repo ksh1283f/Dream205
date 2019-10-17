@@ -8976,6 +8976,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8383237584603213456, guid: 03f3fec1cb7f9e946a1be207f909c76c,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383237584603213456, guid: 03f3fec1cb7f9e946a1be207f909c76c,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383237584603213456, guid: 03f3fec1cb7f9e946a1be207f909c76c,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 377841838, guid: 03f3fec1cb7f9e946a1be207f909c76c, type: 3}
       propertyPath: startWayPoint
       value: 
@@ -14569,33 +14584,39 @@ MonoBehaviour:
   SoundList: []
   DataList:
   - source: {fileID: 0}
+    ani: {fileID: 0}
     interactableObj:
     - {fileID: 1959172413}
     delayTime: 3
     description: "\uC804\uC790\uB80C\uC9C0\uB97C \uC870\uC900"
     isShowTextByEnd: 0
   - source: {fileID: 0}
+    ani: {fileID: 0}
     interactableObj:
     - {fileID: 1614360232727772067}
     delayTime: 0
     description: "\uC190\uC744 \uC870\uC900"
     isShowTextByEnd: 0
   - source: {fileID: 1701149687}
+    ani: {fileID: 0}
     interactableObj: []
     delayTime: 0.2
     description: "\uBB3C\uB0B4\uB824\uAC00\uB294\uC18C\uB9AC"
     isShowTextByEnd: 0
   - source: {fileID: 0}
+    ani: {fileID: 0}
     interactableObj:
     - {fileID: 1118162740}
     delayTime: 0
     description: "\uC2A4\uD53C\uCEE4\uB97C\uC870\uC900"
     isShowTextByEnd: 0
   - source: {fileID: 1180392036}
+    ani: {fileID: 0}
     interactableObj: []
     delayTime: 1
     description: "\uC804\uD654\uBCA8 \uC18C\uB9AC \uC6B8\uB9AC\uAE30+\uB2E4\uC74C"
     isShowTextByEnd: 0
+  dataIndex: 0
 --- !u!4 &949698531
 Transform:
   m_ObjectHideFlags: 0
@@ -15799,7 +15820,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 28425f332fa18764299ea3bb65696996,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.667
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 28425f332fa18764299ea3bb65696996,
         type: 3}
@@ -22406,10 +22427,6 @@ PrefabInstance:
       propertyPath: m_Height
       value: 1.47
       objectReference: {fileID: 0}
-    - target: {fileID: 455060927, guid: 7389b965dd7b7dd44831aefdb92dbab3, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7c512f8a20490b34db0b297a2e939bd2, type: 2}
     - target: {fileID: 576157803, guid: 7389b965dd7b7dd44831aefdb92dbab3, type: 3}
       propertyPath: startWayPoint
       value: 
@@ -22439,6 +22456,10 @@ PrefabInstance:
       propertyPath: m_ClearFlags
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 455060927, guid: 7389b965dd7b7dd44831aefdb92dbab3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c512f8a20490b34db0b297a2e939bd2, type: 2}
     - target: {fileID: 7228825940010203037, guid: 7389b965dd7b7dd44831aefdb92dbab3,
         type: 3}
       propertyPath: m_TagString

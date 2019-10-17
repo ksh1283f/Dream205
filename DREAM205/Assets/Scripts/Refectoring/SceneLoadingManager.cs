@@ -79,11 +79,11 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
                 //case E_SceneType.level6Bathroom:
                 //return GameManager_Bathroom6.Instance;
 
-                //case E_SceneType.level7Bathroom:
-                //break;
+                case E_SceneType.level7Bathroom:
+                break;
 
-                //case E_SceneType.level8Elevator:
-                //break;
+                case E_SceneType.level8Elevator:
+                break;
 
                 default:
                     break;
