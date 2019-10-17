@@ -1952,7 +1952,7 @@ MonoBehaviour:
   - source: {fileID: 1788539120}
     ani: {fileID: 0}
     interactableObj: []
-    delayTime: 3
+    delayTime: 1.5
     description: "\uC218\uACE0\uD558\uC168\uC2B5\uB2C8\uB2E4"
     isShowTextByEnd: 0
   - source: {fileID: 1314145616}
