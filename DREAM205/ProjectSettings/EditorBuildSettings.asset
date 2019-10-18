@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level8Elevator.unity
     guid: 8cd52927d4867d74493663b80462efa5
+  - enabled: 1
+    path: Assets/Scenes/level9Ending.unity
+    guid: bb4f02329fded0c48900d1b25d585071
   m_configObjects: {}
