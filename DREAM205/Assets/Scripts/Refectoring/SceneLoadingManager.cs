@@ -16,7 +16,7 @@ public enum E_SceneType
     level6Bathroom,
     level7Bathroom,
     level8Elevator,
-    endingScene,
+    level9Ending,
 }
 
 public class SceneLoadingManager : Singletone<SceneLoadingManager>
@@ -45,6 +45,7 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
                 case E_SceneType.level6Bathroom:
                 case E_SceneType.level7Bathroom:
                 case E_SceneType.level8Elevator:
+                case E_SceneType.level9Ending:
 
                     StartSceneLoading(sceneType);
                     break;
@@ -76,14 +77,17 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
                 case E_SceneType.level5Kitchen:
                     break;
 
-                //case E_SceneType.level6Bathroom:
-                //return GameManager_Bathroom6.Instance;
+                case E_SceneType.level6Bathroom:
+                return GameManager_Bathroom6.Instance;
 
                 case E_SceneType.level7Bathroom:
                 break;
 
                 case E_SceneType.level8Elevator:
                 break;
+
+                case E_SceneType.level9Ending:
+                    break;
 
                 default:
                     break;

@@ -180,7 +180,7 @@ namespace Valve.VR.Extras
                 if(present != null && present.connectedWayPointList.Contains(waypoints[i]))
                 {
                     waypoints[i].gameObject.SetActive(true);
-                    waypoints[i].ActivateCollider(waypoints[i].GetHashCode() != present.GetHashCode());
+                  //  waypoints[i].ActivateCollider(waypoints[i].GetHashCode() != present.GetHashCode());
                     continue;
                 }
 

@@ -14,6 +14,7 @@ public enum E_RoomInteractObjType
     Microwave,
     Hands,
     Speaker,
+    Phone,
 }
 
 public class InteractiveProps : InteractableObj

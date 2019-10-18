@@ -30,6 +30,6 @@ public class GameManager_Bathroom7 : MonoBehaviour
         while (flickAni.isPlaying)
             yield return null;
 
-        SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level6Bathroom, 0);
+        SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level8Elevator, 0);
     }
 }
