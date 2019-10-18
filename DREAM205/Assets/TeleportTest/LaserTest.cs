@@ -39,6 +39,7 @@ namespace Valve.VR.Extras
         [SerializeField] List<Waypoint> waypoints = new List<Waypoint>();
         [SerializeField] Waypoint presentWaypoint=null;
         [SerializeField] Waypoint startWayPoint = null;
+        [SerializeField] Waypoint limitUseLaserWaypoint = null;
 
         private void Start()
         {
@@ -123,6 +124,13 @@ namespace Valve.VR.Extras
 
             if (interactWithUI != null && interactWithUI.GetStateDown(pose.inputSource))
             {
+                //todo 특정 웨이포인트에 있을때만 쏠수 있는지 체크
+                if(limitUseLaserWaypoint != null)
+                {
+                    if (presentWaypoint != limitUseLaserWaypoint)
+                        return;
+                }
+
                 //Debug.LogError("interactWithUI != null && interactWithUI.GetState(pose.inputSource)");
                 if (bHit && hit.distance < 100f)    // 레이저에 뭔가 닿았고, 물체와 컨트롤러 사이의 거리가 100 미만일 때
                 {
