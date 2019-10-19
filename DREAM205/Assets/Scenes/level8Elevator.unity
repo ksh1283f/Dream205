@@ -4103,6 +4103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flickAni: {fileID: 0}
   blackImage: {fileID: 209695266}
+  ambience: {fileID: 1959998424}
+  ambienceStopIndex: 3
 --- !u!1 &1818840955
 GameObject:
   m_ObjectHideFlags: 0
@@ -4485,6 +4487,7 @@ GameObject:
   - component: {fileID: 1959998423}
   - component: {fileID: 1959998422}
   - component: {fileID: 1959998421}
+  - component: {fileID: 1959998424}
   m_Layer: 0
   m_Name: elevator-ambience
   m_TagString: Untagged
@@ -4552,8 +4555,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d84e132c3050e1449a2195f4124d02b5, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4637,6 +4640,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1959998424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959998419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeDuration: 3
+  EffectType: 3
+  isPlayOnStart: 1
 --- !u!1 &1979082363
 GameObject:
   m_ObjectHideFlags: 0

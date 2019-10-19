@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager_Kitchen5 : MonoBehaviour
 {
     [SerializeField] Animation flickAni;
+    [SerializeField] SoundFadeEffect ambience;
 
     void Start()
     {
@@ -15,6 +16,9 @@ public class GameManager_Kitchen5 : MonoBehaviour
     // 씬로딩
     void LoadNextScene()
     {
+        ambience.SetEffectType(E_EffectType.DecreaseFromOneToZero);
+        ambience.SetFadeDuration(3f);
+        StartCoroutine(ambience.FadeEffect());
         StartCoroutine(loadNextScene());
     }
 
@@ -30,6 +34,6 @@ public class GameManager_Kitchen5 : MonoBehaviour
         while (flickAni.isPlaying)
             yield return null;
 
-        SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level6Bathroom, 0);
+        SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level6Bathroom, 1);
     }
 }

@@ -13,6 +13,7 @@ public class DoorOpen : InteractableObj
     [SerializeField] float fadeDuration;
     [SerializeField] bool isNeedInactiveCol;
     [SerializeField] Renderer propsRenderer;
+    [SerializeField] SoundFadeEffect ambienceEffect;
     private Collider doorCol;
 
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class DoorOpen : InteractableObj
 
     void OnDoorAniEnd()
     {
+        FadeAmbience();
         StartCoroutine(FadeSound());
         //SceneManager.LoadScene("level2Room"); // 로딩은 코루틴 종료 후
     }
@@ -69,6 +71,16 @@ public class DoorOpen : InteractableObj
         }
 
         SceneLoadingManager.Instance.SceneType = E_SceneType.level2Room;
+    }
+
+    void FadeAmbience()
+    {
+        if (ambienceEffect == null)
+            return;
+
+        ambienceEffect.SetEffectType(E_EffectType.DecreaseFromOneToZero);
+        ambienceEffect.SetFadeDuration(fadeDuration);
+        StartCoroutine(ambienceEffect.FadeEffect());
     }
 
     public void ActivateGlowMaterial()

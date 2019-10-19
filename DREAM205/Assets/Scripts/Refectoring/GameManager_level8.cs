@@ -7,11 +7,15 @@ public class GameManager_level8 : MonoBehaviour
 {
     [SerializeField] Animation flickAni;
     [SerializeField] Image blackImage;
+    [SerializeField] SoundFadeEffect ambience;
+    [SerializeField] int ambienceStopIndex;
 
     void Start()
     {
         if (blackImage != null)
             blackImage.gameObject.SetActive(false);
+
+        SoundManager.Instance.OnSoundStart += OnDirectAmbience;
 
         StartCoroutine(SoundManager.Instance.IntroSoundPlay());
         SoundManager.Instance.OnSoundPlayEnd += LoadNextScene;
@@ -19,6 +23,8 @@ public class GameManager_level8 : MonoBehaviour
         {
             if (blackImage != null)
                 blackImage.gameObject.SetActive(true);
+            if (ambience != null)
+                ambience.StopAmbience();
         };
     }
 
@@ -30,29 +36,34 @@ public class GameManager_level8 : MonoBehaviour
 
     IEnumerator loadNextScene()
     {
-          if (flickAni != null)
-          {
+        if (flickAni != null)
+        {
             flickAni.Play();
             while (flickAni.isPlaying)
                 yield return null;
-           // Debug.LogError("flickAni is null");
-            //  yield break;
-          }
-
-          //flickAni.Play();
-         // while (flickAni.isPlaying)
-          //    yield return null;
-
+        }
 
         // 엔딩 크레딧 씬로딩
         SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level9Ending, 0);
     }
 
-    void PlayNoise(int index)
+    void OnDirectAmbience(int index)
     {
-        if(index == 1)  // soundManager의 DataList의 인덱스 첫번째에서 재생..
+        if (index != ambienceStopIndex )
+            return;
+
+        if (ambience == null)
         {
-            // todo '완료' 대사부터
+            Debug.LogError("ambience is null");
+            return;
+        }
+
+        if (index == ambienceStopIndex)
+        {
+            ambience.StopAmbience();
+            ambience.SetEffectType(E_EffectType.IncreaseFromZeroToOne);
+            ambience.SetFadeDuration(3f);
+            StartCoroutine(ambience.FadeEffect(3f));
         }
     }
 }

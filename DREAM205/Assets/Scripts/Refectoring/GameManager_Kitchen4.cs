@@ -12,6 +12,7 @@ public class GameManager_Kitchen4 : Singletone<GameManager_Kitchen4>, IGameManag
     [SerializeField] Transform spiderTransFromSpeaker;
    // [SerializeField] Transform spiderTransFromDrawing;
     [SerializeField] Animation fadeAni;
+    [SerializeField] SoundFadeEffect ambience;
 
     public GameObject Maggot;
 
@@ -81,7 +82,9 @@ public class GameManager_Kitchen4 : Singletone<GameManager_Kitchen4>, IGameManag
 
     void LoadNextScene()
     {
-        //SceneLoadingManager.Instance.SceneType = E_SceneType.level3Room;
+        ambience.SetEffectType(E_EffectType.DecreaseFromOneToZero);
+        ambience.SetFadeDuration(nextSceneDelayTime);
+        StartCoroutine(ambience.FadeEffect());
         SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level5Kitchen, nextSceneDelayTime, fadeAni);
     }
 }
