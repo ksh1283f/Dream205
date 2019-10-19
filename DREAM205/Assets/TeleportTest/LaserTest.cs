@@ -8,7 +8,7 @@ namespace Valve.VR.Extras
 {
     public class LaserTest : MonoBehaviour
     {
-        
+
         public SteamVR_Behaviour_Pose pose;
 
         //public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.__actions_default_in_InteractUI;
@@ -37,9 +37,10 @@ namespace Valve.VR.Extras
         Transform previousContact = null;
         [SerializeField] PlayerBody playerBody;
         [SerializeField] List<Waypoint> waypoints = new List<Waypoint>();
-        [SerializeField] Waypoint presentWaypoint=null;
+        [SerializeField] Waypoint presentWaypoint = null;
         [SerializeField] Waypoint startWayPoint = null;
         [SerializeField] Waypoint limitUseLaserWaypoint = null;
+        Collider laserCol;
 
         private void Start()
         {
@@ -55,7 +56,10 @@ namespace Valve.VR.Extras
                 Debug.LogError("playerBody is null");
 
             teleport = Valve.VR.InteractionSystem.Teleport.instance;
-            if(teleport != null)
+            if (laserObj != null)
+                laserCol = laserObj.GetComponent<Collider>();
+
+            if (teleport != null)
             {
                 Debug.Log("OnPlayerTeleport is connected!");
                 teleport.OnPlayerTeleport += OnPlayerTeleport;
@@ -124,18 +128,17 @@ namespace Valve.VR.Extras
 
             if (interactWithUI != null && interactWithUI.GetStateDown(pose.inputSource))
             {
-                //todo 특정 웨이포인트에 있을때만 쏠수 있는지 체크
-                if(limitUseLaserWaypoint != null)
+                // 특정 웨이포인트에 있을때만 인터랙션이 가능한지 체크
+                if (limitUseLaserWaypoint != null)
                 {
-                    if (presentWaypoint != limitUseLaserWaypoint)
-                        return;
+                    laserCol.enabled = presentWaypoint == limitUseLaserWaypoint;
                 }
 
                 //Debug.LogError("interactWithUI != null && interactWithUI.GetState(pose.inputSource)");
                 if (bHit && hit.distance < 100f)    // 레이저에 뭔가 닿았고, 물체와 컨트롤러 사이의 거리가 100 미만일 때
                 {
                     dist = hit.distance;
-                   // Debug.LogError("bHit && hit.distance < 100f, dist: " + dist + " hit object: " + hit.transform.gameObject.name);
+                    // Debug.LogError("bHit && hit.distance < 100f, dist: " + dist + " hit object: " + hit.transform.gameObject.name);
                 }
 
                 laserParent.transform.localScale = new Vector3(thickness * 15f, thickness * 15f, dist);
@@ -151,14 +154,14 @@ namespace Valve.VR.Extras
                     laserParent.gameObject.SetActive(false);
                     laserObj.isInteracted = false;
                 }
-                    
+
             }
         }
 
         void OnPlayerTeleport(TeleportArea area)
         {
             Waypoint wayPoint = area.parent.GetComponent<Waypoint>();
-            if(wayPoint == null)
+            if (wayPoint == null)
             {
                 Debug.LogError("Teleport area parent's  waypoint is null");
                 return;
@@ -177,10 +180,10 @@ namespace Valve.VR.Extras
             for (int i = 0; i < waypoints.Count; i++)
             {
                 // 현재위치를 기준으로 앞, 뒤, 제자리만 활성화
-                if(present != null && present.connectedWayPointList.Contains(waypoints[i]))
+                if (present != null && present.connectedWayPointList.Contains(waypoints[i]))
                 {
                     waypoints[i].gameObject.SetActive(true);
-                  //  waypoints[i].ActivateCollider(waypoints[i].GetHashCode() != present.GetHashCode());
+                    //waypoints[i].ActivateCollider(waypoints[i].GetHashCode() != present.GetHashCode());
                     continue;
                 }
 
@@ -190,7 +193,7 @@ namespace Valve.VR.Extras
 
         void SetCharacterOnWayPoint(Waypoint start, bool isInit = false)
         {
-            if(start == null)
+            if (start == null)
             {
                 Debug.LogError("StartWaypoint is null");
                 return;
