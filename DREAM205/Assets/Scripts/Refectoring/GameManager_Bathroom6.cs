@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager_Bathroom6 : Singletone<GameManager_Kitchen4>, IGameManagerInteract
+public class GameManager_Bathroom6 : Singletone<GameManager_Bathroom6>, IGameManagerInteract
 {
     [SerializeField] AudioSource Sound;
     [SerializeField] float fadeDuration;
