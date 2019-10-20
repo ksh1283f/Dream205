@@ -9,6 +9,9 @@ public class GameManager_Elevator : MonoBehaviour
     public GameObject fourteen;
     public GameObject closed;
     public SoundFadeEffect elevatorAmbience;
+    [SerializeField] float fadeDuration;
+    [SerializeField] float nextSceneDelayTime;
+    [SerializeField] Animation fadeAni;
 
     public int FloorSelectedDataIndex;  // 인스펙터에서 초기화
 
@@ -68,5 +71,10 @@ public class GameManager_Elevator : MonoBehaviour
         elevatorAmbience.SetFadeDuration(1.5f);
         elevatorAmbience.SetEffectType(E_EffectType.DecreaseFromMiddleToZero);
         StartCoroutine(elevatorAmbience.FadeEffect());
+    }
+    void LoadNextScene()
+    {
+        //SceneLoadingManager.Instance.SceneType = E_SceneType.level3Room;
+        SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level1FrontDoor, nextSceneDelayTime, fadeAni);
     }
 }

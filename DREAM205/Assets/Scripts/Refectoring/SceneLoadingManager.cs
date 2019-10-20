@@ -7,7 +7,7 @@ using Valve.VR;
 public enum E_SceneType
 {
     None,
-    level0Elevator,
+    level0,
     level1FrontDoor,
     level2Room,
     level3Room,
@@ -36,7 +36,7 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
             sceneType = value;
             switch (sceneType)
             {
-                case E_SceneType.level0Elevator:
+                case E_SceneType.level0:
                 case E_SceneType.level1FrontDoor:
                 case E_SceneType.level2Room:
                 case E_SceneType.level3Room:
@@ -62,7 +62,7 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
             {
                 case E_SceneType.None:
                     break;
-                case E_SceneType.level0Elevator:
+                case E_SceneType.level0:
                     break;
                 case E_SceneType.level1FrontDoor:
                     break;
