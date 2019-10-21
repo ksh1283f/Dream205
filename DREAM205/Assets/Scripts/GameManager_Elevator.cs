@@ -71,6 +71,7 @@ public class GameManager_Elevator : MonoBehaviour
         elevatorAmbience.SetFadeDuration(1.5f);
         elevatorAmbience.SetEffectType(E_EffectType.DecreaseFromMiddleToZero);
         StartCoroutine(elevatorAmbience.FadeEffect());
+        LoadNextScene();
     }
     void LoadNextScene()
     {
