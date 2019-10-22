@@ -2105,6 +2105,10 @@ PrefabInstance:
       propertyPath: startWayPoint
       value: 
       objectReference: {fileID: 168947744}
+    - target: {fileID: 377841838, guid: 03f3fec1cb7f9e946a1be207f909c76c, type: 3}
+      propertyPath: limitUseLaserWaypoint
+      value: 
+      objectReference: {fileID: 2044257277}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03f3fec1cb7f9e946a1be207f909c76c, type: 3}
 --- !u!20 &1388837341 stripped

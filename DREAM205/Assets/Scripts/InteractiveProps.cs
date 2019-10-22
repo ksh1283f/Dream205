@@ -58,7 +58,10 @@ public class InteractiveProps : InteractableObj
             else
                 return;
 
-            m_dissolve.TriggerDissolve(DissolveMaterial);
+            if (m_dissolve != null)
+                m_dissolve.TriggerDissolve(DissolveMaterial);
+            else
+                isInteractionEnd = true;
         }
     }
 
@@ -67,7 +70,6 @@ public class InteractiveProps : InteractableObj
         isInteractionEnd =true;
 
         Destroy(gameObject);
-        //gameObject.SetActive(false);
     }
 
     /// <summary>
