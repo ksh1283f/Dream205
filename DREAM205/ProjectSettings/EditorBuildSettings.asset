@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/level0Elevator.unity
+    path: Assets/Scenes/level0Elevator_backUp.unity
     guid: b217a051e908b384ba5458621fda4941
   - enabled: 1
-    path: Assets/Scenes/level0.unity
+    path: Assets/Scenes/levelOpening.unity
+    guid: caf0d0b24c4b2dd4fb52131e87978c6d
+  - enabled: 1
+    path: Assets/Scenes/level0Elevator.unity
     guid: 6a237a8de5b0d10419de2359379d4a79
   - enabled: 1
     path: Assets/Scenes/level1FrontDoor.unity

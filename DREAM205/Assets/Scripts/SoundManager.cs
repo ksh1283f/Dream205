@@ -26,19 +26,9 @@ public class SoundManager : Singletone<SoundManager>
     public List<AudioSource> SoundList = new List<AudioSource>();
     public List<DirectingData> DataList = new List<DirectingData>();
 
-    bool isStart = false;
-
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))    // todo 엘베씬일때만 쓰도록 처리가 필요
-        {
-            if (!isStart)
-            {
-                isStart = true;
-                StartCoroutine(IntroSoundPlay());
-            }
-        }
-
+        StartCoroutine(IntroSoundPlay());
     }
 
     public IEnumerator IntroSoundPlay()
