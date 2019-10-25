@@ -46,6 +46,9 @@ public class InteractiveProps : InteractableObj
             if (laser.isInteracted == true)
                 return;
 
+            if (IsInteractionEnd)
+                return;
+
             laser.isInteracted = true;
 
             SceneLoadingManager.Instance.PresentGameManager.CreateMaggot(objType);

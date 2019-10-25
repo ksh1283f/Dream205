@@ -150,6 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOut: {fileID: 1912263497}
+  startType: 1
+  delayTime: 10
 --- !u!4 &5598686
 Transform:
   m_ObjectHideFlags: 0

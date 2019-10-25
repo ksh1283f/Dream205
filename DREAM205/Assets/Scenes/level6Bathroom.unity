@@ -2109,6 +2109,10 @@ PrefabInstance:
       propertyPath: limitUseLaserWaypoint
       value: 
       objectReference: {fileID: 2044257277}
+    - target: {fileID: 392049635, guid: 03f3fec1cb7f9e946a1be207f909c76c, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03f3fec1cb7f9e946a1be207f909c76c, type: 3}
 --- !u!20 &1388837341 stripped
@@ -3300,6 +3304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RingSound1: {fileID: 1335095254}
   RingSound2: {fileID: 1547083718}
+  PhoneRingIndex: 0
 --- !u!1001 &1967940875
 PrefabInstance:
   m_ObjectHideFlags: 0

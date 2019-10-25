@@ -13,6 +13,9 @@ public enum E_EffectType
     DecreaseFromOneToMiddle,    // 1 -> 0.5
     DecreaseFromMiddleToZero,    // 0.5 -> 1
     DecreaseFromOneToZero,  // 1 -> 0
+
+    IncreaseFromStartCustomValToEndCustomVal,
+    DecreaseFromStartCustomValToEndCustomVal,
 }
 
 public class SoundFadeEffect : MonoBehaviour
@@ -21,6 +24,9 @@ public class SoundFadeEffect : MonoBehaviour
     [SerializeField] float FadeDuration;
     [SerializeField] E_EffectType EffectType;
     [SerializeField] bool isPlayOnStart;
+
+    [SerializeField] [Range(0, 1)] float startCustomVal;
+    [SerializeField] [Range(0, 1)] float endCustomVal;
 
     private void Awake()
     { 
@@ -78,7 +84,11 @@ public class SoundFadeEffect : MonoBehaviour
                 endVolumeVal = 0f;
                 break;
 
-            
+            case E_EffectType.IncreaseFromStartCustomValToEndCustomVal:
+            case E_EffectType.DecreaseFromStartCustomValToEndCustomVal:
+                startVolumeVal = startCustomVal;
+                endVolumeVal = endCustomVal;
+                break;
         }
 
         if(startVolumeVal == -1 || endVolumeVal == -1)
@@ -126,11 +136,13 @@ public class SoundFadeEffect : MonoBehaviour
             case E_EffectType.IncreaseFromZeroToOne:
             case E_EffectType.IncreaseFromMiddleToOne:
             case E_EffectType.IncreaseFromZeroToMiddle:
+            case E_EffectType.IncreaseFromStartCustomValToEndCustomVal:
                 return volume < destVal;
 
             case E_EffectType.DecreaseFromOneToMiddle:
             case E_EffectType.DecreaseFromMiddleToZero:
             case E_EffectType.DecreaseFromOneToZero:
+            case E_EffectType.DecreaseFromStartCustomValToEndCustomVal:
                 return volume > destVal;
         }
 
