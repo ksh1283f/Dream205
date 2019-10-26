@@ -28,6 +28,7 @@ public class InteractiveProps : InteractableObj
     public Material GlowMaterial;
     [SerializeField] E_RoomInteractObjType objType;
     [SerializeField] Renderer propsRenderer;
+    [SerializeField] AudioSource effectSound;
 
     private void Start()
     {
@@ -50,6 +51,8 @@ public class InteractiveProps : InteractableObj
                 return;
 
             laser.isInteracted = true;
+            if (effectSound != null)
+                effectSound.Play();
 
             SceneLoadingManager.Instance.PresentGameManager.CreateMaggot(objType);
             SceneLoadingManager.Instance.PresentGameManager.RemoveSound(sound);
