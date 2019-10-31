@@ -111,11 +111,13 @@ public class SceneLoadingManager : Singletone<SceneLoadingManager>
 
     IEnumerator startSceneLoading(E_SceneType type)
     {
-        AsyncOperation ao = SceneManager.LoadSceneAsync(type.ToString());
-        while (!ao.isDone)
+        vrLoadLevel.levelName = type.ToString();
+        vrLoadLevel.Trigger();
+        while (SteamVR_LoadLevel.progress < 1)
             yield return null;
 
         // 로딩 후 할일
+        sceneType = type;
         coroutine = null;
     }
 
