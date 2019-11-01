@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum E_GameStartType
 {
     None,
@@ -14,14 +15,14 @@ public class GameManager_Opening : Singletone<GameManager_Opening>
     [SerializeField] Animation fadeOut;
     [SerializeField] E_GameStartType startType;
     [SerializeField] float delayTime;
+    // public SoundManager soundManager;
 
-    IEnumerator Start()
+    void Start()
     {
         if (startType != E_GameStartType.AutoPlayWithDelay)
-            yield break;
+            return;
 
-        yield return new WaitForSeconds(delayTime);
-        SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level0Elevator, 0, fadeOut);
+        SoundManager.Instance.OnSoundPlayEnd += () => { SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level0Elevator, 0); };
     }
 
     void Update()
@@ -36,8 +37,9 @@ public class GameManager_Opening : Singletone<GameManager_Opening>
                 Debug.LogError("fadeOut is null");
                 return;
             }
-
-            SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level0Elevator, 0, fadeOut);
+            // StartCoroutine(IntroSoundPlay());
+            StartCoroutine(SoundManager.Instance.IntroSoundPlay());
+           // SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level0Elevator, 0, fadeOut);
         }
     }
 }

@@ -44,7 +44,7 @@ public class GameManager_level8 : MonoBehaviour
         }
 
         // 엔딩 크레딧 씬로딩
-        SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level9Ending, 0);
+        SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level9Ending, 3);
     }
 
     void OnDirectAmbience(int index)

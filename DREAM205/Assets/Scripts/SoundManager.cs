@@ -28,7 +28,8 @@ public class SoundManager : Singletone<SoundManager>
 
     private void Start()
     {
-        StartCoroutine(IntroSoundPlay());
+        if (SceneLoadingManager.Instance.SceneType != E_SceneType.levelOpening)
+            StartCoroutine(IntroSoundPlay());
     }
 
     public IEnumerator IntroSoundPlay()
