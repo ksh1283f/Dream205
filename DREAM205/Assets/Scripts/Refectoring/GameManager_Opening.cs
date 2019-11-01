@@ -19,8 +19,8 @@ public class GameManager_Opening : Singletone<GameManager_Opening>
 
     void Start()
     {
-        if (startType != E_GameStartType.AutoPlayWithDelay)
-            return;
+        //if (startType != E_GameStartType.AutoPlayWithDelay)
+       //     return;
 
         SoundManager.Instance.OnSoundPlayEnd += () => { SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level0Elevator, 0); };
     }
