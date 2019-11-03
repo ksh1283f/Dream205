@@ -264,7 +264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &23168712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1900,9 +1900,10 @@ Animation:
   m_GameObject: {fileID: 440933212}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 034e134eff868f94980869c71348e48c, type: 2}
+  m_Animation: {fileID: 7400000, guid: d7640a53110e24b4abc303bf197fe525, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 034e134eff868f94980869c71348e48c, type: 2}
+  - {fileID: 7400000, guid: d7640a53110e24b4abc303bf197fe525, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -2538,7 +2539,7 @@ MonoBehaviour:
   - source: {fileID: 1873359381}
     ani: {fileID: 0}
     interactableObj: []
-    delayTime: 0
+    delayTime: 3
     description: "\"\uC548\uB155\uD558\uC138\uC694. \uB9E4\uC77C \uB9E4\uC77C \uD589\uBCF5\uD55C
       \uAFC8 'Dream205 Care Service'\uC785\uB2C8\uB2E4.//"
     isShowTextByEnd: 0
@@ -5297,12 +5298,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 684148394, guid: 03f3fec1cb7f9e946a1be207f909c76c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1401092264, guid: 03f3fec1cb7f9e946a1be207f909c76c, type: 3}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 684148394, guid: 03f3fec1cb7f9e946a1be207f909c76c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
