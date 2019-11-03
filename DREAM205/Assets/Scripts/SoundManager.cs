@@ -25,10 +25,11 @@ public class SoundManager : Singletone<SoundManager>
     //AudioClip narr;
     public List<AudioSource> SoundList = new List<AudioSource>();
     public List<DirectingData> DataList = new List<DirectingData>();
+    [SerializeField] bool dontStopAtStart;
 
     private void Start()
     {
-        if (SceneLoadingManager.Instance.SceneType != E_SceneType.levelOpening)
+        if (!dontStopAtStart)
             StartCoroutine(IntroSoundPlay());
     }
 

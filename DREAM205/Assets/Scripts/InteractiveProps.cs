@@ -29,14 +29,17 @@ public class InteractiveProps : InteractableObj
     [SerializeField] E_RoomInteractObjType objType;
     [SerializeField] Renderer propsRenderer;
     [SerializeField] AudioSource effectSound;
+    private Collider col;
 
-    private void Start()
+    private void Awake()
     {
         if (objType != E_RoomInteractObjType.Cusion)
             propsRenderer = GetComponent<Renderer>();
 
         OnExecuteInteract += ActivateGlowMaterial;
-        GetComponent<Collider>().enabled = false;
+        col = GetComponent<Collider>();
+        if(col != null)
+            col.enabled = false;
     }   
 
     private void OnTriggerEnter(Collider other)
@@ -90,6 +93,6 @@ public class InteractiveProps : InteractableObj
         }
 
         propsRenderer.material = GlowMaterial;
-        GetComponent<Collider>().enabled = true;
+        col.enabled = true;
     }
 }
