@@ -2769,6 +2769,7 @@ MonoBehaviour:
     delayTime: 0
     description: "\uBB38\uC5F4\uACE0 \uB2E4\uC74C\uC52C\uC73C\uB85C"
     isShowTextByEnd: 0
+  dontStopAtStart: 0
   dataIndex: 0
 --- !u!4 &205163952
 Transform:
@@ -4855,6 +4856,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.060000002
       objectReference: {fileID: 0}
+    - target: {fileID: 6624938059201222721, guid: 7c5e57b9d441ab441800e9c41b7b34ae,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e6d9f755df656c94d8703a76c37f5a91, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c5e57b9d441ab441800e9c41b7b34ae, type: 3}
 --- !u!1 &355237616
@@ -15497,7 +15503,7 @@ PrefabInstance:
     - target: {fileID: 8383237584601613706, guid: 03f3fec1cb7f9e946a1be207f909c76c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 8383237584601613706, guid: 03f3fec1cb7f9e946a1be207f909c76c,
         type: 3}

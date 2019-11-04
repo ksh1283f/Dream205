@@ -41,6 +41,7 @@ namespace Valve.VR.Extras
         [SerializeField] Waypoint startWayPoint = null;
         [SerializeField] Waypoint limitUseLaserWaypoint = null;
         Collider laserCol;
+        float playerHeight;
 
         private void Start()
         {
@@ -64,6 +65,7 @@ namespace Valve.VR.Extras
                 Debug.Log("OnPlayerTeleport is connected!");
                 teleport.OnPlayerTeleport += OnPlayerTeleport;
             }
+            playerHeight = playerTrans.position.y;
             playerBody.OnMovedPlayer = OnMovedPlayer;
 
             waypoints = FindObjectsOfType<Waypoint>().ToList();
@@ -201,7 +203,6 @@ namespace Valve.VR.Extras
 
             presentWaypoint = start;
             ShowWaypoint(presentWaypoint);
-            float playerHeight = playerTrans.position.y;
             playerTrans.position = new Vector3(presentWaypoint.transform.position.x,
                                                playerHeight,
                                                presentWaypoint.transform.position.z);

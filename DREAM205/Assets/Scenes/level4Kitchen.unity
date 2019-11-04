@@ -13539,7 +13539,7 @@ PrefabInstance:
     - target: {fileID: 8383237584601613706, guid: 03f3fec1cb7f9e946a1be207f909c76c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.012
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 8383237584601613706, guid: 03f3fec1cb7f9e946a1be207f909c76c,
         type: 3}
@@ -19567,6 +19567,7 @@ MonoBehaviour:
     delayTime: 1
     description: "\uC804\uD654\uBCA8 \uC18C\uB9AC \uC6B8\uB9AC\uAE30+\uB2E4\uC74C"
     isShowTextByEnd: 0
+  dontStopAtStart: 0
   dataIndex: 3
 --- !u!4 &949698531
 Transform:

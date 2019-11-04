@@ -183,6 +183,7 @@ MonoBehaviour:
     delayTime: 3
     description: "\uC804\uD654\uBCA8 \uD6C4 \uC52C\uB85C\uB529"
     isShowTextByEnd: 0
+  dontStopAtStart: 0
   dataIndex: 0
 --- !u!4 &39727737
 Transform:
@@ -2007,7 +2008,7 @@ PrefabInstance:
     - target: {fileID: 8383237584601613706, guid: 03f3fec1cb7f9e946a1be207f909c76c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 8383237584601613706, guid: 03f3fec1cb7f9e946a1be207f909c76c,
         type: 3}
