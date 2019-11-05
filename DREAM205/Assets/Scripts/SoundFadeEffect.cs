@@ -21,15 +21,19 @@ public enum E_EffectType
 public class SoundFadeEffect : MonoBehaviour
 {
     AudioSource source;
-    [SerializeField] float FadeDuration;
+    [SerializeField] float fadeDuration;
     [SerializeField] E_EffectType EffectType;
     [SerializeField] bool isPlayOnStart;
 
     [SerializeField] [Range(0, 1)] float startCustomVal;
     [SerializeField] [Range(0, 1)] float endCustomVal;
 
+    public float StartCustomVal { get { return startCustomVal; } }
+    public float EndCustomVal { get { return endCustomVal; } }
+    public float FadeDuration { get { return fadeDuration; } }
+
     private void Awake()
-    { 
+    {
         source = GetComponent<AudioSource>();
     }
 
@@ -39,7 +43,7 @@ public class SoundFadeEffect : MonoBehaviour
             StartCoroutine(FadeEffect());
     }
 
-    public IEnumerator FadeEffect(float delay =0)
+    public IEnumerator FadeEffect(float delay = 0)
     {
         if (source == null)
         {
@@ -49,8 +53,8 @@ public class SoundFadeEffect : MonoBehaviour
 
         float startTime = 0;
         float volume = source.volume;
-        float startVolumeVal=-1f;
-        float endVolumeVal=-1f;
+        float startVolumeVal = -1f;
+        float endVolumeVal = -1f;
 
         switch (EffectType)
         {
@@ -91,15 +95,17 @@ public class SoundFadeEffect : MonoBehaviour
                 break;
         }
 
-        if(startVolumeVal == -1 || endVolumeVal == -1)
+        if (startVolumeVal == -1 || endVolumeVal == -1)
         {
-            Debug.LogError("Sound effect type is invalid : "+EffectType);
+            Debug.LogError("Sound effect type is invalid : " + EffectType);
             yield break;
         }
 
         yield return new WaitForSeconds(delay);
-        
-        source.Play();
+
+        if (!source.isPlaying)  // 재생중일때는 다시 재생하지 않도록
+            source.Play();
+
         volume = Mathf.Lerp(startVolumeVal, endVolumeVal, startTime);
         while (isCompleteEffect(EffectType, volume, endVolumeVal))
         {
@@ -119,6 +125,18 @@ public class SoundFadeEffect : MonoBehaviour
     public void SetEffectType(E_EffectType type)
     {
         EffectType = type;
+    }
+
+    public void SetEffectVolumes(float start, float end)
+    {
+        if (start > 1 || start < 0 || end > 1 || end < 0)
+        {
+            Debug.LogError("invalid volume value ");
+            return;
+        }
+
+        startCustomVal = start;
+        endCustomVal = end;
     }
 
     public void StopAmbience()

@@ -10,10 +10,12 @@ public class DoorOpen : InteractableObj
     public AudioSource DoorSound;
     [SerializeField] Material GlowMaterial;
     [SerializeField] AudioSource phoneRing;
-    [SerializeField] float fadeDuration;
+    [SerializeField] float fadeAmbienceDuration;
     [SerializeField] bool isNeedInactiveCol;
     [SerializeField] Renderer propsRenderer;
     [SerializeField] SoundFadeEffect ambienceEffect;
+    [SerializeField] SoundFadeEffect tvSoundEffect;
+    [SerializeField] float fadeTvSoundDuration;
     private Collider doorCol;
 
     // Start is called before the first frame update
@@ -63,7 +65,7 @@ public class DoorOpen : InteractableObj
         volume = Mathf.Lerp(1f, 0, startTime);
         while (volume > 0f)
         {
-            startTime += Time.deltaTime / fadeDuration;
+            startTime += Time.deltaTime / fadeAmbienceDuration;
             volume = Mathf.Lerp(1f, 0, startTime);
             phoneRing.volume = volume;
 
@@ -78,9 +80,16 @@ public class DoorOpen : InteractableObj
         if (ambienceEffect == null)
             return;
 
+        if (tvSoundEffect == null)
+            return;
+
         ambienceEffect.SetEffectType(E_EffectType.DecreaseFromOneToZero);
-        ambienceEffect.SetFadeDuration(fadeDuration);
+        ambienceEffect.SetFadeDuration(fadeAmbienceDuration);
         StartCoroutine(ambienceEffect.FadeEffect());
+
+        tvSoundEffect.SetEffectType(E_EffectType.DecreaseFromStartCustomValToEndCustomVal);
+        tvSoundEffect.SetEffectVolumes(tvSoundEffect.EndCustomVal, tvSoundEffect.StartCustomVal);
+        StartCoroutine(tvSoundEffect.FadeEffect());
     }
 
     public void ActivateGlowMaterial()

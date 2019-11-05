@@ -17,6 +17,7 @@ public class GameManager_Kitchen4 : Singletone<GameManager_Kitchen4>, IGameManag
     [SerializeField] AudioSource announce2;
     [SerializeField] InteractiveProps speaker;  // 별도의 처리가 필요한 오브젝트
     [SerializeField] int speakerDirectingIndex;
+    [SerializeField] SoundFadeEffect tvSound;
 
     // for debug
     [SerializeField] AudioSource nowPlaying;
@@ -92,9 +93,14 @@ public class GameManager_Kitchen4 : Singletone<GameManager_Kitchen4>, IGameManag
 
     void LoadNextScene()
     {
+        tvSound.SetEffectType(E_EffectType.DecreaseFromStartCustomValToEndCustomVal);
+        tvSound.SetEffectVolumes(tvSound.EndCustomVal, tvSound.StartCustomVal);
+        StartCoroutine(tvSound.FadeEffect());
+
         ambience.SetEffectType(E_EffectType.DecreaseFromOneToZero);
         ambience.SetFadeDuration(nextSceneDelayTime);
         StartCoroutine(ambience.FadeEffect());
+
         SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level5Kitchen, nextSceneDelayTime, fadeAni);
     }
 

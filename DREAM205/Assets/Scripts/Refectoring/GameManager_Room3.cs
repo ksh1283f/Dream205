@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager_Room3 : MonoBehaviour
 {
     [SerializeField]Animation flickAni;
+    [SerializeField] SoundFadeEffect radioSound;
 
     void Start()
     {
@@ -15,6 +16,9 @@ public class GameManager_Room3 : MonoBehaviour
     // 씬로딩
     void LoadNextScene()
     {
+        radioSound.SetEffectType(E_EffectType.DecreaseFromStartCustomValToEndCustomVal);
+        radioSound.SetEffectVolumes(radioSound.EndCustomVal, radioSound.StartCustomVal);
+        StartCoroutine(radioSound.FadeEffect());
         StartCoroutine(loadNextScene());
     }
 

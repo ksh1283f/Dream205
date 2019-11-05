@@ -13,6 +13,8 @@ public class GameManager_Bathroom6 : Singletone<GameManager_Bathroom6>, IGameMan
     [SerializeField] Transform spiderTransFromDrawing;
     [SerializeField] Animation fadeAni;
 
+    [SerializeField] List<SoundFadeEffect> phoneSoundList = new List<SoundFadeEffect>();
+
     public GameObject Maggot;
 
     private void Start()
@@ -28,7 +30,7 @@ public class GameManager_Bathroom6 : Singletone<GameManager_Bathroom6>, IGameMan
         {
             case E_RoomInteractObjType.Microwave:
                 pos = spiderTransFromMicroWave.position;
-               break;
+                break;
 
             case E_RoomInteractObjType.Hands:
                 pos = spiderTransFromHands.position;
@@ -39,7 +41,7 @@ public class GameManager_Bathroom6 : Singletone<GameManager_Bathroom6>, IGameMan
                 break;
 
             case E_RoomInteractObjType.Drawing:
-               pos = spiderTransFromDrawing.position;
+                pos = spiderTransFromDrawing.position;
                 break;
 
             default:
@@ -81,7 +83,13 @@ public class GameManager_Bathroom6 : Singletone<GameManager_Bathroom6>, IGameMan
 
     void LoadNextScene()
     {
-        //SceneLoadingManager.Instance.SceneType = E_SceneType.level3Room;
+        for (int i = 0; i < phoneSoundList.Count; i++)
+        {
+            phoneSoundList[i].SetEffectType(E_EffectType.DecreaseFromStartCustomValToEndCustomVal);
+            phoneSoundList[i].SetEffectVolumes(phoneSoundList[i].EndCustomVal, phoneSoundList[i].StartCustomVal);
+            StartCoroutine(phoneSoundList[i].FadeEffect());
+        }
+
         SceneLoadingManager.Instance.StartSceneLoadingWithDelay(E_SceneType.level7Bathroom, nextSceneDelayTime, fadeAni);
     }
 }
