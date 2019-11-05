@@ -21504,7 +21504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sound: {fileID: 0}
   fadeDuration: 1
-  nextSceneDelayTime: 3
+  nextSceneDelayTime: 1
   spiderTransFromMicroWave: {fileID: 2006374811}
   spiderTransFromHands: {fileID: 1077148942}
   spiderTransFromSpeaker: {fileID: 185085922}
@@ -21514,6 +21514,7 @@ MonoBehaviour:
   announce2: {fileID: 270155906}
   speaker: {fileID: 1118162740}
   speakerDirectingIndex: 3
+  tvSound: {fileID: 2072140391}
   nowPlaying: {fileID: 0}
   Maggot: {fileID: 8632493445839973424, guid: 37fbcb9ca63092249b757cbfece48f4c, type: 3}
 --- !u!4 &1130681198
@@ -23453,7 +23454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeDuration: 3
+  fadeDuration: 0
   EffectType: 3
   isPlayOnStart: 1
   startCustomVal: 0
@@ -33554,6 +33555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2072140389}
   - component: {fileID: 2072140390}
+  - component: {fileID: 2072140391}
   m_Layer: 0
   m_Name: tv
   m_TagString: Untagged
@@ -33683,6 +33685,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2072140391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072140388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 0
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!1 &2076430848
 GameObject:
   m_ObjectHideFlags: 0

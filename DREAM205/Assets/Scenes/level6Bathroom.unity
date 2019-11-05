@@ -1299,6 +1299,16 @@ MonoBehaviour:
   spiderTransFromSpeaker: {fileID: 0}
   spiderTransFromDrawing: {fileID: 0}
   fadeAni: {fileID: 119497806}
+  phoneSoundList:
+  - {fileID: 1811821291272467272}
+  - {fileID: 4959564602822118341}
+  - {fileID: 1741216723308739065}
+  - {fileID: 6423167117316610743}
+  - {fileID: 7108521794853567853}
+  - {fileID: 1321634314892428057}
+  - {fileID: 103556547767450625}
+  - {fileID: 3163480277958347595}
+  - {fileID: 6063178333128089123}
   Maggot: {fileID: 0}
 --- !u!4 &605266029 stripped
 Transform:
@@ -4262,6 +4272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3287408306512103059}
   - component: {fileID: 103556547767450624}
+  - component: {fileID: 103556547767450625}
   m_Layer: 0
   m_Name: s_phone_24
   m_TagString: Untagged
@@ -4365,6 +4376,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &103556547767450625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103556547767450623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 1
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!1 &114663647343566663
 GameObject:
   m_ObjectHideFlags: 0
@@ -8061,6 +8089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1370164681376053548}
   - component: {fileID: 1321634314892428056}
+  - component: {fileID: 1321634314892428057}
   m_Layer: 0
   m_Name: s_phone_19
   m_TagString: Untagged
@@ -8164,6 +8193,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1321634314892428057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321634314892428055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 1
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!23 &1326616604912574796
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9795,6 +9841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8678363976772418084}
   - component: {fileID: 1741216723308739064}
+  - component: {fileID: 1741216723308739065}
   m_Layer: 0
   m_Name: s_phone_20
   m_TagString: Untagged
@@ -9898,6 +9945,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1741216723308739065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741216723308739063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 1
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!4 &1748075642168844780
 Transform:
   m_ObjectHideFlags: 0
@@ -10076,6 +10140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4007881107496835147}
   - component: {fileID: 1811821291272467271}
+  - component: {fileID: 1811821291272467272}
   m_Layer: 0
   m_Name: s_phone_29
   m_TagString: Untagged
@@ -10179,6 +10244,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1811821291272467272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811821291272467270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 1
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!4 &1817236987551756777
 Transform:
   m_ObjectHideFlags: 0
@@ -15028,6 +15110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4153619478445890003}
   - component: {fileID: 3163480277958347594}
+  - component: {fileID: 3163480277958347595}
   m_Layer: 0
   m_Name: s_phone_37
   m_TagString: Untagged
@@ -15131,6 +15214,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3163480277958347595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163480277958347593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 1
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!4 &3166160370074166495
 Transform:
   m_ObjectHideFlags: 0
@@ -21542,6 +21642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4007540807873782395}
   - component: {fileID: 4959564602822118340}
+  - component: {fileID: 4959564602822118341}
   m_Layer: 0
   m_Name: s_phone_28
   m_TagString: Untagged
@@ -21645,6 +21746,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4959564602822118341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4959564602822118339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 1
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!33 &4964410918161008032
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25280,6 +25398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6089165362620746612}
   - component: {fileID: 6063178333128089122}
+  - component: {fileID: 6063178333128089123}
   m_Layer: 0
   m_Name: s_phone_6
   m_TagString: Untagged
@@ -25383,6 +25502,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6063178333128089123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063178333128089121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 1
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!4 &6067754019949442941
 Transform:
   m_ObjectHideFlags: 0
@@ -26772,6 +26908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7656308445003010648}
   - component: {fileID: 6423167117316610742}
+  - component: {fileID: 6423167117316610743}
   m_Layer: 0
   m_Name: s_phone_25
   m_TagString: Untagged
@@ -26875,6 +27012,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6423167117316610743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6423167117316610741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 1
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!1 &6423781020442699326
 GameObject:
   m_ObjectHideFlags: 0
@@ -29197,6 +29351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2610515444499104232}
   - component: {fileID: 7108521794853567852}
+  - component: {fileID: 7108521794853567853}
   m_Layer: 0
   m_Name: s_phone_17
   m_TagString: Untagged
@@ -29300,6 +29455,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7108521794853567853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7108521794853567851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 1
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!23 &7108522027775122011
 MeshRenderer:
   m_ObjectHideFlags: 0

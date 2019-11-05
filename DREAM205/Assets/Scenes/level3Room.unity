@@ -4271,6 +4271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flickAni: {fileID: 590093963}
+  radioSound: {fileID: 832413853}
 --- !u!4 &333945811
 Transform:
   m_ObjectHideFlags: 0
@@ -9155,6 +9156,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &832413853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832413851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+  EffectType: 7
+  isPlayOnStart: 0
+  startCustomVal: 0
+  endCustomVal: 1
 --- !u!1 &844089127
 GameObject:
   m_ObjectHideFlags: 0
@@ -21299,10 +21317,12 @@ MonoBehaviour:
   DoorSound: {fileID: 1628266132}
   GlowMaterial: {fileID: 2100000, guid: 5f6738c117d022541b8ed7f63349ab53, type: 2}
   phoneRing: {fileID: 0}
-  fadeDuration: 0
+  fadeAmbienceDuration: 0
   isNeedInactiveCol: 1
   propsRenderer: {fileID: 1190431718}
   ambienceEffect: {fileID: 0}
+  tvSoundEffect: {fileID: 0}
+  fadeTvSoundDuration: 0
 --- !u!1 &2001135988
 GameObject:
   m_ObjectHideFlags: 0
