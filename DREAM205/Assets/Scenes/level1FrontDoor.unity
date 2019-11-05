@@ -11012,7 +11012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeDuration: 3
+  fadeDuration: 3
   EffectType: 3
   isPlayOnStart: 1
   startCustomVal: 0
@@ -11392,7 +11392,6 @@ GameObject:
   - component: {fileID: 268230131}
   - component: {fileID: 268230132}
   - component: {fileID: 268230133}
-  - component: {fileID: 268230134}
   m_Layer: 0
   m_Name: tv
   m_TagString: Untagged
@@ -11529,33 +11528,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268230130}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeDuration: 3
+  fadeDuration: 3
   EffectType: 7
   isPlayOnStart: 1
   startCustomVal: 0
   endCustomVal: 0.35
---- !u!114 &268230134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268230130}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FadeDuration: 3
-  EffectType: 8
-  isPlayOnStart: 1
-  startCustomVal: 0.35
-  endCustomVal: 0
 --- !u!1 &269286487
 GameObject:
   m_ObjectHideFlags: 0
@@ -40308,7 +40290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18deb8c52cb3dce4ca5745201227032e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeDuration: 3
+  fadeDuration: 3
   EffectType: 3
   isPlayOnStart: 1
   startCustomVal: 0
@@ -41692,10 +41674,12 @@ MonoBehaviour:
   DoorSound: {fileID: 1028587209}
   GlowMaterial: {fileID: 0}
   phoneRing: {fileID: 261109686}
-  fadeDuration: 2
+  fadeAmbienceDuration: 0
   isNeedInactiveCol: 0
   propsRenderer: {fileID: 7954614465655190735}
   ambienceEffect: {fileID: 1615246555}
+  tvSoundEffect: {fileID: 268230133}
+  fadeTvSoundDuration: 3
 --- !u!65 &1678713794
 BoxCollider:
   m_ObjectHideFlags: 0
