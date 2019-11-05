@@ -41674,7 +41674,7 @@ MonoBehaviour:
   DoorSound: {fileID: 1028587209}
   GlowMaterial: {fileID: 0}
   phoneRing: {fileID: 261109686}
-  fadeAmbienceDuration: 0
+  fadeAmbienceDuration: 2
   isNeedInactiveCol: 0
   propsRenderer: {fileID: 7954614465655190735}
   ambienceEffect: {fileID: 1615246555}
