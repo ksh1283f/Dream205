@@ -119,7 +119,7 @@ public class SoundFadeEffect : MonoBehaviour
 
     public void SetFadeDuration(float value)
     {
-        FadeDuration = value;
+        fadeDuration = value;
     }
 
     public void SetEffectType(E_EffectType type)
