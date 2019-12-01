@@ -802,7 +802,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838004433}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: eece49e3128243c44ba5cd7dff2718ca, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: dfc4566d223181142a3d7b24ff51b5b9, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -826,7 +826,7 @@ VideoPlayer:
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 0
-  m_WaitForFirstFrame: 1
+  m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
 --- !u!33 &838004436
 MeshFilter:
@@ -860,8 +860,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1393ccbf3240bf640926379f2fc78d0b, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 783c15b7176f10c4391b63bfc2779d16, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1048,8 +1048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartFo: {fileID: 0}
-  SoundList:
-  - {fileID: 0}
+  SoundList: []
   DataList:
   - source: {fileID: 838004438}
     ani: {fileID: 0}
