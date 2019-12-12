@@ -32,7 +32,7 @@ public class DoorOpen : InteractableObj
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("handle"))
+        if (col.CompareTag("handle") && !isInteractionEnd)
         {
             isInteractionEnd = true;
             DoorAni.Play();
